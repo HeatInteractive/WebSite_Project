@@ -121,6 +121,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Navbar visibility fix for video background */
+        #navbar-placeholder nav {
+            background: rgba(2, 4, 16, 0.85) !important;
+            backdrop-filter: blur(20px) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+        }
     </style>
 </head>
 
@@ -152,17 +160,19 @@
             <div class="max-w-4xl reveal">
                 <div class="flex items-center gap-3 mb-6">
                     <span
-                        class="px-3 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded-full text-indigo-300 text-xs font-bold tracking-widest uppercase backdrop-blur-md">Endüstri
+                        class="px-3 py-1 bg-indigo-500/20 border border-indigo-500/30 rounded-full text-indigo-300 text-xs font-bold tracking-widest uppercase backdrop-blur-md"
+                        data-i18n="project.hh.tag.industry">Endüstri
                         4.0</span>
                     <span
-                        class="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-white text-xs font-bold tracking-widest uppercase backdrop-blur-md">VR
+                        class="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-white text-xs font-bold tracking-widest uppercase backdrop-blur-md"
+                        data-i18n="project.hh.tag.vr">VR
                         Eğitim</span>
                 </div>
                 <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
-                    Ağır Sanayi <br>
-                    <span class="gradient-text-accent">İSG Simülasyonu</span>
+                    <span data-i18n="project.hh.title1">Ağır Sanayi</span> <br>
+                    <span class="gradient-text-accent" data-i18n="project.hh.title2">İSG Simülasyonu</span>
                 </h1>
-                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed" data-i18n="project.hh.description">
                     Metalürji fabrikaları için riskleri sıfıra indiren, çalışan verimliliğini %40 artıran hiper-gerçekçi
                     sanal gerçeklik eğitim modülü.
                 </p>
@@ -175,19 +185,23 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
                 <div>
-                    <h4 class="text-gray-500 text-xs uppercase tracking-widest font-bold mb-2">Müşteri</h4>
+                    <h4 class="text-gray-500 text-xs uppercase tracking-widest font-bold mb-2"
+                        data-i18n="project.hh.info.client">Müşteri</h4>
                     <p class="text-white text-lg font-medium">IronSteel Corp.</p>
                 </div>
                 <div>
-                    <h4 class="text-gray-500 text-xs uppercase tracking-widest font-bold mb-2">Platform</h4>
+                    <h4 class="text-gray-500 text-xs uppercase tracking-widest font-bold mb-2"
+                        data-i18n="project.hh.info.platform">Platform</h4>
                     <p class="text-white text-lg font-medium">Oculus Quest 2 & PC</p>
                 </div>
                 <div>
-                    <h4 class="text-gray-500 text-xs uppercase tracking-widest font-bold mb-2">Teknolojiler</h4>
+                    <h4 class="text-gray-500 text-xs uppercase tracking-widest font-bold mb-2"
+                        data-i18n="project.hh.info.tech">Teknolojiler</h4>
                     <p class="text-white text-lg font-medium">Unity, C#, XR Toolkit</p>
                 </div>
                 <div>
-                    <h4 class="text-gray-500 text-xs uppercase tracking-widest font-bold mb-2">Yıl</h4>
+                    <h4 class="text-gray-500 text-xs uppercase tracking-widest font-bold mb-2"
+                        data-i18n="project.hh.info.year">Yıl</h4>
                     <p class="text-white text-lg font-medium">2023</p>
                 </div>
             </div>
@@ -201,9 +215,11 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
             <div class="space-y-8 reveal">
                 <div>
-                    <h2 class="text-3xl font-bold text-white mb-4">Zorluk: <span
-                            class="text-gray-400 font-normal">Yüksek Risk, Yüksek Maliyet</span></h2>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h2 class="text-3xl font-bold text-white mb-4"><span
+                            data-i18n="project.hh.challenge.title">Zorluk:</span> <span
+                            class="text-gray-400 font-normal" data-i18n="project.hh.challenge.subtitle">Yüksek Risk,
+                            Yüksek Maliyet</span></h2>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="project.hh.challenge.p">
                         Ağır sanayi ortamlarında iş güvenliği eğitimi vermek, geleneksel yöntemlerle hem tehlikeli hem
                         de maliyetlidir. Üretim hattını durdurmak, deneyimsiz personeli gerçek makinelerle karşı karşıya
                         getirmek ciddi riskler taşır. Müşterimiz, bu riskleri ortadan kaldırırken eğitim kalitesini
@@ -211,9 +227,10 @@
                     </p>
                 </div>
                 <div>
-                    <h2 class="text-3xl font-bold text-white mb-4">Çözüm: <span
-                            class="text-gray-400 font-normal">Dijital İkiz Teknolojisi</span></h2>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h2 class="text-3xl font-bold text-white mb-4"><span
+                            data-i18n="project.hh.solution.title">Çözüm:</span> <span class="text-gray-400 font-normal"
+                            data-i18n="project.hh.solution.subtitle">Dijital İkiz Teknolojisi</span></h2>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="project.hh.solution.p">
                         Heat Interactive olarak, fabrikanın birebir "dijital ikizini" Unity oyun motorunda modelledik.
                         Fizik tabanlı etkileşimler kullanarak, çalışanların sanal ortamda gerçekçi senaryoları (yangın,
                         makine arızası, acil tahliye) deneyimlemelerini sağladık. Hata yapmanın serbest olduğu bu
@@ -225,11 +242,12 @@
                 <div class="grid grid-cols-2 gap-4 mt-8">
                     <div class="glass-card p-6 rounded-2xl">
                         <div class="text-3xl font-bold gradient-text-accent mb-1">%95</div>
-                        <div class="text-sm text-gray-400">Kaza Oranında Düşüş</div>
+                        <div class="text-sm text-gray-400" data-i18n="project.hh.stat.accident">Kaza Oranında Düşüş
+                        </div>
                     </div>
                     <div class="glass-card p-6 rounded-2xl">
                         <div class="text-3xl font-bold gradient-text-accent mb-1">x3</div>
-                        <div class="text-sm text-gray-400">Öğrenme Hızı</div>
+                        <div class="text-sm text-gray-400" data-i18n="project.hh.stat.learning">Öğrenme Hızı</div>
                     </div>
                 </div>
             </div>
@@ -249,7 +267,7 @@
 
         <!-- Tam Genişlik Video/Görsel -->
         <div class="mb-32 reveal">
-            <h3 class="text-2xl font-bold text-white mb-8">Deneyimden Kareler</h3>
+            <h3 class="text-2xl font-bold text-white mb-8" data-i18n="project.hh.gallery.title">Deneyimden Kareler</h3>
             <div class="glass-card p-2 rounded-3xl border border-white/10">
                 <div class="relative rounded-2xl overflow-hidden aspect-video bg-black">
                     <video class="w-full h-full object-cover" controls
@@ -278,23 +296,7 @@
 
     </section>
 
-    <!-- Next Project Navigation -->
-    <section class="py-20 border-t border-white/5">
-        <div class="container mx-auto px-6 text-center reveal">
-            <p class="text-gray-500 text-sm tracking-widest uppercase mb-4">Sıradaki Proje</p>
-            <a href="project-detail.html" class="inline-block group">
-                <h2
-                    class="text-4xl md:text-6xl font-extrabold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-pink-400 transition-all duration-300">
-                    GreenTech Rezidans
-                </h2>
-                <div
-                    class="mt-4 flex justify-center items-center gap-2 text-gray-400 group-hover:text-white transition-colors">
-                    <span>İncele</span>
-                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                </div>
-            </a>
-        </div>
-    </section>
+
 
     <!-- Footer -->
     <footer class="border-t border-white/5 bg-black/40 backdrop-blur-md pt-16 pb-8">
@@ -302,7 +304,7 @@
             class="container mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
             <div class="flex flex-col gap-2">
                 <a href="index.html" class="text-2xl font-bold text-white tracking-tight">Heat Interactive</a>
-                <p class="text-sm text-gray-500">Geleceği bugün tasarlıyoruz.</p>
+                <p class="text-sm text-gray-500" data-i18n="footer.motto">Geleceği bugün tasarlıyoruz.</p>
             </div>
             <div class="flex gap-6 mt-4 md:mt-0 text-gray-400">
                 <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -310,11 +312,14 @@
                 <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
             </div>
         </div>
-        <div class="container mx-auto px-6 mt-8 pt-8 border-t border-white/5 text-center text-xs text-gray-600">
+        <div class="container mx-auto px-6 mt-8 pt-8 border-t border-white/5 text-center text-xs text-gray-600"
+            data-i18n="footer.rights_long">
             © 2023 Heat Interactive. Tüm hakları saklıdır.
         </div>
     </footer>
 
+    <script src="js/translations.js"></script>
+    <script src="js/language.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const revealOnScroll = () => {

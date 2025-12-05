@@ -73,15 +73,16 @@
                 <div
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border-indigo-500/30 text-xs font-semibold text-indigo-300 tracking-wider uppercase reveal">
                     <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                    Geleceğin Teknolojisi
+                    <span data-i18n="home.hero.badge">Geleceğin Teknolojisi</span>
                 </div>
 
                 <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight reveal delay-100">
-                    Sınırların Ötesini <br>
-                    <span class="gradient-text-accent">Keşfedin</span>
+                    <span data-i18n="home.hero.title1">Sınırların Ötesini</span> <br>
+                    <span class="gradient-text-accent" data-i18n="home.hero.title2">Keşfedin</span>
                 </h1>
 
-                <p class="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed reveal delay-200">
+                <p class="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed reveal delay-200"
+                    data-i18n="home.hero.description">
                     Heat Interactive, markanız için fiziksel dünyanın kısıtlamalarından bağımsız, hiper-gerçekçi sanal
                     evrenler tasarlar.
                 </p>
@@ -92,11 +93,14 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity">
                         </div>
-                        <span class="relative flex items-center gap-2">Projeleri Gör <i
-                                class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></span>
+                        <span class="relative flex items-center gap-2">
+                            <span data-i18n="home.hero.cta.projects">Projeleri Gör</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </span>
                     </a>
                     <a href="contact.html"
-                        class="px-8 py-4 glass-card rounded-xl font-bold text-white hover:bg-white/10 transition-colors border border-white/10">
+                        class="px-8 py-4 glass-card rounded-xl font-bold text-white hover:bg-white/10 transition-colors border border-white/10"
+                        data-i18n="home.hero.cta.contact">
                         Bize Ulaşın
                     </a>
                 </div>
@@ -112,11 +116,13 @@
                         <div class="absolute bottom-6 left-6 right-6 z-20 flex gap-4">
                             <div class="glass-card p-4 rounded-xl flex-1 text-center bg-black/40 backdrop-blur-xl">
                                 <div class="text-2xl font-bold text-white counter" data-target="50">0</div>
-                                <div class="text-xs text-gray-400 uppercase tracking-wider">Proje</div>
+                                <div class="text-xs text-gray-400 uppercase tracking-wider"
+                                    data-i18n="home.hero.stat.project">Proje</div>
                             </div>
                             <div class="glass-card p-4 rounded-xl flex-1 text-center bg-black/40 backdrop-blur-xl">
                                 <div class="text-2xl font-bold text-white">4.9</div>
-                                <div class="text-xs text-gray-400 uppercase tracking-wider">Rating</div>
+                                <div class="text-xs text-gray-400 uppercase tracking-wider"
+                                    data-i18n="home.hero.stat.rating">Rating</div>
                             </div>
                         </div>
                     </div>
@@ -128,8 +134,8 @@
     <!-- Logo Cloud -->
     <section class="py-16 border-y border-white/5 bg-black/20">
         <div class="container mx-auto px-6">
-            <p class="text-center text-base text-gray-400 mb-12 font-semibold tracking-widest uppercase">Güvenilir İş
-                Ortaklarımız</p>
+            <p class="text-center text-base text-gray-400 mb-12 font-semibold tracking-widest uppercase"
+                data-i18n="home.partners.title">Güvenilir İş Ortaklarımız</p>
             <div id="companies-container"
                 class="flex flex-wrap justify-center gap-16 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
                 <!-- Companies will be loaded here dynamically -->
@@ -140,9 +146,10 @@
     <!-- Hizmetler -->
     <section class="py-24 container mx-auto px-6">
         <div class="text-center mb-16 reveal">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text">Neler Yapıyoruz?</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">Sanal gerçeklik dünyasında ihtiyacınız olan her şey tek bir çatı
-                altında.</p>
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text" data-i18n="home.services.title">Neler
+                Yapıyoruz?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto" data-i18n="home.services.description">Sanal gerçeklik dünyasında
+                ihtiyacınız olan her şey tek bir çatı altında.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -156,8 +163,9 @@
                         class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 mb-6">
                         <i class="fa-solid fa-graduation-cap text-xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Kurumsal VR Eğitim</h3>
-                    <p class="text-gray-400 max-w-md leading-relaxed">
+                    <h3 class="text-2xl font-bold text-white mb-3" data-i18n="home.services.service1.title">Kurumsal VR
+                        Eğitim</h3>
+                    <p class="text-gray-400 max-w-md leading-relaxed" data-i18n="home.services.service1.desc">
                         Çalışanlarınızı sanal ortamda, sıfır risk ve düşük maliyetle eğitin. İş güvenliği
                         simülasyonları.
                     </p>
@@ -168,8 +176,9 @@
                 <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center text-pink-400 mb-6">
                     <i class="fa-solid fa-building text-xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">Mimari Vizyon</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
+                <h3 class="text-xl font-bold text-white mb-3" data-i18n="home.services.service2.title">Mimari Vizyon
+                </h3>
+                <p class="text-sm text-gray-400 leading-relaxed" data-i18n="home.services.service2.desc">
                     Projelerinizi inşa edilmeden önce müşterilerinize gezdirin. 1:1 ölçekli sanal turlar.
                 </p>
             </div>
@@ -179,8 +188,8 @@
                     class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 mb-6">
                     <i class="fa-solid fa-gamepad text-xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">Oyunlaştırma</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
+                <h3 class="text-xl font-bold text-white mb-3" data-i18n="home.services.service3.title">Oyunlaştırma</h3>
+                <p class="text-sm text-gray-400 leading-relaxed" data-i18n="home.services.service3.desc">
                     Marka etkileşimini artırmak için Unity tabanlı özel VR oyun ve deneyimleri.
                 </p>
             </div>
@@ -194,8 +203,9 @@
                             class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6">
                             <i class="fa-solid fa-cube text-xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Metaverse Entegrasyonu</h3>
-                        <p class="text-gray-400 leading-relaxed">
+                        <h3 class="text-2xl font-bold text-white mb-3" data-i18n="home.services.service4.title">
+                            Metaverse Entegrasyonu</h3>
+                        <p class="text-gray-400 leading-relaxed" data-i18n="home.services.service4.desc">
                             Markanızı Decentraland, Sandbox veya özel metaverse evrenlerine taşıyın.
                         </p>
                     </div>
@@ -211,7 +221,8 @@
                 <div class="text-center md:text-left">
                     <a href="#"
                         class="text-2xl font-bold text-white flex items-center justify-center md:justify-start gap-2 tracking-tight">Heat</a>
-                    <p class="text-sm text-gray-500 mt-2">© 2023 Heat Interactive. İstanbul.</p>
+                    <p class="text-sm text-gray-500 mt-2" data-i18n="footer.rights">© 2023 Heat Interactive. İstanbul.
+                    </p>
                 </div>
                 <div class="flex gap-6">
                     <a href="#"
@@ -230,6 +241,8 @@
 
     <!-- Supabase and Companies Script -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/language.js"></script>
     <script src="js/companies.js"></script>
 
     <script>

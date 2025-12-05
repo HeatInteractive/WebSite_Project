@@ -4,13 +4,13 @@
 
 **Proje Adı:** Heat Interactive Website  
 **Proje Türü:** Kurumsal VR/AR Şirketi Web Sitesi  
-**Dil:** Türkçe  
+**Diller:** Türkçe (Varsayılan), İngilizce  
 **Teknoloji Stack:** HTML, CSS, JavaScript, Tailwind CSS, Supabase  
 **Lokasyon:** `d:\Antigravity-Projects\HeatInteractive-Web`
 
 ## 🎯 Proje Amacı
 
-Heat Interactive, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) çözümleri sunan bir teknoloji şirketinin kurumsal web sitesidir. Site, şirketin hizmetlerini, projelerini ve iş ortaklarını modern ve etkileyici bir tasarımla sunmaktadır.
+Heat Interactive, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) çözümleri sunan bir teknoloji şirketinin kurumsal web sitesidir. Site, şirketin hizmetlerini, projelerini ve iş ortaklarını modern ve etkileyici bir tasarımla sunmaktadır. Artık çoklu dil desteği ile global bir kitleye hitap etmektedir.
 
 ---
 
@@ -18,15 +18,18 @@ Heat Interactive, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) çöz�
 
 ```
 HeatInteractive-Web/
-├── index.html          # Ana sayfa (17.8 KB)
-├── projects.html       # Projeler sayfası (14.2 KB)
-├── hallhunter_strawberry_project.html # Ağır Sanayi İSG Proje Detayı
-├── aboutus.html        # Hakkımızda sayfası (10.2 KB)
-├── contact.html        # İletişim sayfası (9.4 KB)
-├── style.css           # Birleştirilmiş CSS dosyası (1.8 KB)
+├── index.html          # Ana sayfa (TR/EN uyumlu)
+├── projects.html       # Projeler sayfası (TR/EN uyumlu)
+├── hallhunter_strawberry_project.html # Ağır Sanayi İSG Proje Detayı (TR/EN uyumlu)
+├── aboutus.html        # Hakkımızda sayfası (TR/EN uyumlu)
+├── contact.html        # İletişim sayfası (TR/EN uyumlu)
+├── style.css           # Birleştirilmiş CSS dosyası ve özel efektler
 └── js/
     ├── companies.js    # Supabase şirketler entegrasyonu
-    └── projects.js     # Supabase projeler entegrasyonu
+    ├── projects.js     # Supabase projeler entegrasyonu
+    ├── navbar.js       # Dinamik navbar ve dil değiştirici
+    ├── language.js     # Dil yönetimi ve localStorage mantığı
+    └── translations.js # Çeviri sözlüğü (TR/EN)
 ```
 
 ---
@@ -54,453 +57,138 @@ HeatInteractive-Web/
 **Font Ailesi:** Outfit (Google Fonts)  
 **Ağırlıklar:** 300, 400, 500, 700, 800
 
-**Kullanım:**
-- Başlıklar: `font-extrabold` (800)
-- Alt başlıklar: `font-bold` (700)
-- Gövde metni: `font-medium` (500)
-- İnce metinler: `font-light` (300)
+---
 
-### Tasarım Özellikleri
+## 🌍 Çoklu Dil Sistemi (YENİ)
 
-1. **Glassmorphism (Cam Efekti)**
-   - `backdrop-filter: blur(10px)`
-   - Yarı saydam arka planlar
-   - İnce kenarlıklar
+### Mimari
+Site, URL yönlendirmesi yerine **istemci taraflı (client-side)** bir çeviri sistemi kullanır.
 
-2. **Gradient Efektleri**
-   - İndigo → Pink gradyanları
-   - Metin gradyanları (gradient-text-accent)
-   - Arkaplan glow efektleri
+1.  **Veri Kaynağı:** `js/translations.js` dosyası TR ve EN çevirilerini içeren büyük bir JSON objesidir.
+2.  **Mantık:** `js/language.js` dosyası:
+    *   `localStorage`'dan dil tercihini okur ('tr' veya 'en').
+    *   Sayfa yüklendiğinde `data-i18n` özniteliğine sahip tüm elementleri bulur.
+    *   Seçili dile göre içeriği günceller.
+3.  **Kullanıcı Arayüzü:** `js/navbar.js` içindeki dil değiştirici (TR | EN) butonları.
 
-3. **Animasyonlar**
-   - Scroll reveal (opacity + translateY)
-   - Hover scale efektleri
-   - Blob animasyonları (7s infinite)
-   - Transition delays (100ms, 200ms, 300ms)
+### Kullanım
+
+**HTML:**
+```html
+<h1 data-i18n="home.hero.title">Sınırların Ötesini Keşfedin</h1>
+```
+
+**JavaScript (Dinamik İçerik İçin):**
+```javascript
+// js/projects.js gibi dosyalarda
+element.textContent = getTranslation('projects.loading'); 
+```
+
+**Kalıcılık:**
+Dil tercihi `localStorage.setItem('heat_lang', 'en')` ile tarayıcıda saklanır.
 
 ---
 
 ## 🔧 Teknik Detaylar
 
 ### CSS Mimarisi
-
 **Dosya:** `style.css`
+Tüm inline stiller temizlendi. Tailwind CSS, CDN üzerinden geliştirme ortamında kullanılıyor. Prodüksiyon için build işlemi önerilir.
 
-**Bölümler:**
-1. **Base Styles** - Body ve genel stiller
-2. **Background Glow Effects** - Arkaplan animasyonları
-3. **Glassmorphism Cards** - Cam efektli kartlar
-4. **Scroll Reveal Animations** - Kaydırma animasyonları
-5. **Gradient Text Effects** - Metin gradyanları
-6. **Transition Delays** - Gecikme sınıfları
-7. **Form Input Styles** - Form elemanları
+### JavaScript Modülleri
 
-**ÖNEMLİ:** Tüm inline CSS'ler kaldırıldı ve `style.css`'e taşındı. Artık tüm sayfalar bu tek dosyayı kullanıyor.
+1.  **js/navbar.js**:
+    *   Tüm sayfalara navbar'ı dinamik olarak enjekte eder.
+    *   Dil değiştirme butonlarını içerir.
+    *   Mobil menü mantığını yönetir.
 
-### Tailwind CSS Konfigürasyonu
+2.  **js/projects.js**:
+    *   Supabase'den projeleri çeker.
+    *   Çoklu dil desteği için `getTranslation()` fonksiyonunu kullanır.
 
-```javascript
-tailwind.config = {
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Outfit', 'sans-serif']
-            },
-            colors: {
-                brand: { /* ... */ }
-            },
-            animation: {
-                'blob': 'blob 7s infinite',
-                'float': 'float 6s ease-in-out infinite'
-            },
-            keyframes: {
-                blob: { /* ... */ },
-                float: { /* ... */ }
-            }
-        }
-    }
-}
-```
+3.  **js/companies.js**:
+    *   Supabase'den iş ortağı logolarını çeker.
 
-### JavaScript Fonksiyonları
+### Supabase Entegrasyonu
 
-**index.html içinde:**
-1. **Scroll Reveal** - `.reveal` sınıfına sahip elementleri görünür yapar
-2. **Counter Animation** - Sayaç animasyonu (50 projeye kadar)
-3. **Hero Mouse Parallax** - Mouse hareketine göre parallax efekti
+**Bağlantı Bilgileri:**
+*   `SUPABASE_URL`: `https://zbifnmzafevagllhzibk.supabase.co`
+*   `SUPABASE_ANON_KEY`: (Public Key - `js/projects.js` ve `js/companies.js` içinde tanımlı)
 
-**js/companies.js:**
-- Supabase'den şirket verilerini çeker
-- Dinamik HTML oluşturur
-- Hata yönetimi ve debug logging
-
----
-
-## 🗄️ Supabase Entegrasyonu
-
-### Bağlantı Bilgileri
-
-```javascript
-SUPABASE_URL: 'https://zbifnmzafevagllhzibk.supabase.co'
-SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
-```
-
-### Tablo Yapısı: Companies
-
-| Kolon | Tip | Açıklama |
-|-------|-----|----------|
-| Name | text | Şirket adı |
-| Logo | text | Logo URL'si |
-
-### Tablo Yapısı: Projects
-
-| Kolon | Tip | Açıklama |
-|-------|-----|----------|
-| id | bigint | Benzersiz ID |
-| project_name | text | Proje Adı |
-| project_description | text | Proje Açıklaması |
-| project_thumbnail | text | Kapak Görseli URL'si |
-
-### Kullanım
-
-```javascript
-// Veri çekme
-const { data, error } = await supabase
-    .from('Companies')
-    .select('*')
-    .order('Name', { ascending: true });
-
-// Dinamik HTML oluşturma
-companies.forEach(company => {
-    // Logo + İsim gösterimi
-});
-```
-
-### Debug Logging
-
-Console'da şu mesajları göreceksiniz:
-- 🔍 Fetching companies from Supabase...
-- 📍 Supabase URL: ...
-- ✅ Successfully fetched companies: [...]
-- 📊 Number of companies: X
-- ⚠️ No companies found, showing empty state
+**Tablolar:**
+*   `Companies`: İsim, Logo URL
+*   `Projects`: Proje Adı, Açıklama, Görsel URL
 
 ---
 
 ## 📄 Sayfa Detayları
 
 ### 1. index.html (Ana Sayfa)
-
-**Bölümler:**
-1. **Hero Section**
-   - Başlık: "Sınırların Ötesini Keşfedin"
-   - Hero image: Supabase'den (`HeroImage.png`)
-   - CTA butonları: "Projeleri Gör", "Bize Ulaşın"
-   - Floating stats: 50 Proje, 4.9 Rating
-
-2. **Logo Cloud (İş Ortakları)**
-   - Dinamik olarak Supabase'den yüklenir
-   - Container ID: `companies-container`
-   - Grayscale + hover efekti
-
-3. **Bento Grid Hizmetler**
-   - Kurumsal VR Eğitim
-   - Mimari Vizyon
-   - Oyunlaştırma
-   - Metaverse Entegrasyonu
-
-4. **Footer**
-   - Logo + Copyright
-   - Sosyal medya linkleri
+*   Hero Section (Supabase görseli ile)
+*   Logo Cloud (Dinamik)
+*   Hizmetler (Bento Grid)
+*   Çeviri desteği eklendi.
 
 ### 2. projects.html (Projeler)
+*   Supabase'den dinamik veri çekimi.
+*   Yükleme ekranı metinleri çevrildi.
+*   Kart yapısı ve "İncele" butonu çevrildi.
 
-**Özellikler:**
-- Dinamik proje listeleme (Supabase'den)
-- Dikey kart tasarımı (Görsel üstte, içerik altta)
-- Hover efektleri ve "İNCELE" butonu
-- Yükleniyor ve boş durum yönetimi
+### 3. contact.html (İletişim)
+*   Form alanı placeholder'ları ve etiketleri çevrildi.
+*   Ofis adres bilgileri.
 
-**JavaScript Entegrasyonu:**
-```javascript
-// js/projects.js üzerinden çalışır
-// Supabase'den 'Projects' tablosunu çeker
-// Dikey kart yapısında render eder
-```
+### 4. aboutus.html (Hakkımızda)
+*   Misyon/Vizyon metinleri çevrildi.
+*   Ekip üyeleri ve şirketin hikayesi.
 
-### 3. hallhunter_strawberry_project.html (Ağır Sanayi İSG)
-
-**Özellikler:**
-- Sinematik Hero Section (Video arkaplan)
-- Proje detayları (Müşteri, Platform, Teknolojiler)
-- Zorluk ve Çözüm bölümleri
-- Galeri ve Video gösterimi
-- "Sıradaki Proje" navigasyonu
-
-### 3. aboutus.html (Hakkımızda)
-
-**Bölümler:**
-1. Vizyon/Misyon kartları
-2. Kurucu ortaklar (Emre Yılmaz - CTO, Zeynep Kaya - CEO)
-3. Hikaye bölümü ("Garajdan Metaverse'e")
-
-### 4. contact.html (İletişim)
-
-**Özellikler:**
-- İletişim bilgileri (Teknopark İstanbul)
-- Google Maps embed
-- İletişim formu (Ad, E-posta, Konu, Mesaj)
-- Form input focus efektleri
-
----
-
-## 🔗 Navigasyon Sistemi
-
-### Dosya İsimleri
-
-**ÖNEMLİ:** Navigasyon linkleri şu dosya isimlerini kullanır:
-- `index.html` - Ana Sayfa
-- `projects.html` - Projeler (NOT: projeler.html DEĞİL!)
-- `aboutus.html` - Hakkımızda (NOT: hakkimizda.html DEĞİL!)
-- `contact.html` - İletişim (NOT: iletisim.html DEĞİL!)
-
-### Navbar Yapısı
-
-**Desktop:**
-- Floating navbar (fixed top-6)
-- Glass-card efekti
-- Logo: "Heat Interactive" (text-xl font-bold)
-- 4 navigasyon linki
-
-**Mobile:**
-- Hamburger menü
-- Fullscreen overlay
-- Close butonu (X)
-
----
-
-## 🎬 Animasyon ve Etkileşimler
-
-### Scroll Reveal
-
-```javascript
-const revealOnScroll = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach((reveal) => {
-        if (reveal.getBoundingClientRect().top < windowHeight - 100) {
-            reveal.classList.add('active');
-        }
-    });
-}
-```
-
-**Kullanım:**
-- `.reveal` - Temel sınıf
-- `.delay-100`, `.delay-200`, `.delay-300` - Gecikme ekler
-
-### Hover Efektleri
-
-- **Kartlar:** `hover:border-indigo-500/30`
-- **Butonlar:** `hover:scale-105`
-- **Linkler:** `hover:text-indigo-400`
-- **Resimler:** `group-hover:scale-110`
-
----
-
-## 🖼️ Medya Kaynakları
-
-### Supabase Storage
-
-**Bucket:** TestBucket  
-**Base URL:** `https://zbifnmzafevagllhzibk.supabase.co/storage/v1/object/public/TestBucket/`
-
-**Kullanılan Dosyalar:**
-- `Logo.png` - Şirket logosu
-- `HeroImage.png` - Ana sayfa hero görseli
-
-### Harici Kaynaklar
-
-- **Font Awesome:** 6.4.0 (CDN)
-- **Google Fonts:** Outfit ailesi
-- **Unsplash:** Yer tutucu görseller (bazı sayfalarda)
-
----
-
-## ⚠️ Önemli Notlar ve Hatırlatmalar
-
-### CSS Konsolidasyonu
-
-✅ **YAPILDI:** Tüm inline CSS'ler `style.css`'e taşındı  
-❌ **YAPMA:** Artık HTML dosyalarına `<style>` tagı ekleme  
-✅ **YAP:** Yeni stiller için `style.css`'i güncelle
-
-### Supabase RLS (Row Level Security)
-
-**Sorun:** Eğer Companies tablosundan veri gelmiyor ise:
-
-1. **Tablo boş mu kontrol et**
-2. **RLS politikalarını kontrol et:**
-   ```sql
-   -- Herkese okuma izni ver
-   CREATE POLICY "Allow public read access"
-   ON "Companies"
-   FOR SELECT
-   TO anon
-   USING (true);
-   ```
-
-### Hero Image Sorunu
-
-**Çözüldü:** `animate-float` ve `reveal` sınıfları kaldırıldı  
-**Neden:** CSS'de tanımlı değildi, resim görünmüyordu  
-**Şimdi:** Resim direkt görünür, animasyon yok
-
-### Logo Değişikliği
-
-**Önceki:** Logo image + "Heat" text  
-**Şimdi:** Sadece "Heat Interactive" text (text-xl font-bold)  
-**Neden:** Kullanıcı talebi - daha okunabilir olması için
+### 5. hallhunter_strawberry_project.html (Detay)
+*   Özel proje detay sayfası.
+*   Tüm metinler (Zorluk, Çözüm, İstatistikler) çevrildi.
 
 ---
 
 ## 🔍 Debug ve Sorun Giderme
 
-### Console Logging
+### Yaygın Sorunlar ve Çözümler
 
-**companies.js** detaylı logging içerir:
-- Her adımda emoji ile işaretlenmiş mesajlar
-- Hata detayları JSON formatında
-- Veri sayısı ve içeriği
+1.  **Dil Değişmiyor:**
+    *   `localStorage` temizlemeyi deneyin.
+    *   Console'da `translations[currentLang]` objesinin dolu olup olmadığına bakın.
 
-### Yaygın Sorunlar
+2.  **Projeler/Şirketler Yüklenmiyor:**
+    *   Supabase bağlantısını kontrol edin.
+    *   Supabase projesinin "Paused" modunda olmadığından emin olun.
+    *   Tarayıcı konsolundaki (F12) hataları inceleyin.
 
-1. **Şirketler görünmüyor**
-   - Console'u kontrol et (F12)
-   - Supabase tablosunu kontrol et
-   - RLS politikalarını kontrol et
-
-2. **Resim görünmüyor**
-   - URL'yi kontrol et
-   - Supabase storage'ı kontrol et
-   - Browser console'da 404 hatası var mı?
-
-3. **Animasyon çalışmıyor**
-   - JavaScript yüklendi mi?
-   - Console'da hata var mı?
-   - CSS sınıfları doğru mu?
-
----
-
-## 📦 Bağımlılıklar
-
-### CDN Kaynakları
-
-```html
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-
-<!-- Supabase JS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-```
-
-### Yerel Dosyalar
-
-```html
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
-
-<!-- JavaScript -->
-<script src="js/companies.js"></script>
-```
-
----
-
-## 🚀 Gelecek Geliştirmeler (Potansiyel)
-
-1. **Proje Detay Sayfaları** - Her proje için ayrı sayfa
-2. **Blog Bölümü** - Şirket haberleri ve makaleler
-3. **Çoklu Dil Desteği** - İngilizce versiyonu
-4. **Admin Panel** - Supabase ile içerik yönetimi
-5. **Form Backend** - İletişim formu için backend entegrasyonu
-6. **Analytics** - Google Analytics entegrasyonu
-
----
-
-## 📝 Kod Standartları
-
-### HTML
-
-- Türkçe karakterler için UTF-8 encoding
-- Semantic HTML5 tagları kullan
-- Accessibility için alt text ekle
-- ID'ler kebab-case (`companies-container`)
-
-### CSS
-
-- BEM benzeri isimlendirme
-- Mobile-first yaklaşım
-- Tailwind utility classes tercih et
-- Custom CSS sadece gerektiğinde
-
-### JavaScript
-
-- Modern ES6+ syntax
-- Async/await kullan
-- Console logging ile debug
-- Error handling her zaman ekle
-
----
-
-## 🎓 Öğrenilen Dersler
-
-1. **CSS Konsolidasyonu:** Inline CSS'ler performans ve bakım açısından kötü
-2. **Supabase RLS:** Public access için politika gerekli
-3. **Debug Logging:** Emoji'li console.log'lar çok yardımcı
-4. **Animasyon Sorunları:** Tanımsız CSS sınıfları elementleri gizleyebilir
-5. **Dosya İsimlendirme:** Türkçe karakter içermeyen dosya isimleri tercih edilmeli
-
----
-
-## 📞 İletişim ve Destek
-
-**Proje Sahibi:** Heat Interactive  
-**Lokasyon:** Teknopark İstanbul, Pendik / İstanbul  
-**E-posta:** info@heatinteractive.com  
-**Telefon:** +90 (216) 555 01 23
+3.  **Sayfa Boş/HTML Hatalı:**
+    *   Script etiketlerinin `<body>` kapanmadan hemen önce olduğundan emin olun.
+    *   `js/navbar.js`'in yüklendiğinden emin olun.
 
 ---
 
 ## 📅 Versiyon Geçmişi
 
-**v1.1** - Proje Yönetimi Güncellemesi
-- `projects.html` dinamik hale getirildi (Supabase entegrasyonu)
-- `js/projects.js` eklendi
-- `hallhunter_strawberry_project.html` detay sayfası eklendi
-- Proje kartları dikey tasarıma geçirildi
+**v1.2** - Çoklu Dil Desteği (Current)
+*   TR/EN dil seçeneği eklendi.
+*   `translations.js` ve `language.js` oluşturuldu.
+*   `navbar.js` güncellendi (Dil değiştirici).
+*   Tüm HTML sayfaları `data-i18n` ile işaretlendi.
 
-**v1.0** - İlk versiyon
-- 4 sayfa (Ana, Projeler, Hakkımızda, İletişim)
-- CSS konsolidasyonu
-- Supabase entegrasyonu
-- Responsive tasarım
+**v1.1** - Dinamik İçerik
+*   `projects.html` dinamik hale getirildi (Supabase).
+*   `hallhunter_strawberry_project.html` eklendi.
 
----
-
-## 🔐 Güvenlik Notları
-
-- **Supabase Anon Key:** Public key, güvenli
-- **RLS Politikaları:** Veri güvenliği için aktif tutulmalı
-- **Form Validation:** Frontend validation mevcut, backend gerekli
-- **CORS:** Supabase otomatik handle ediyor
+**v1.0** - İlk Sürüm
+*   Temel sayfa yapıları.
+*   CSS konsolidasyonu.
 
 ---
 
-**Son Güncelleme:** 2025-12-05  
-**Proje Durumu:** Aktif Geliştirme  
-**Bakım:** Düzenli güncellemeler yapılıyor
+## 📞 İletişim
+
+**E-posta:** hello@heatinteractive.com
+**Adres:** Maslak Mah. Büyükdere Cad. Spine Tower No: 243 Sarıyer / İstanbul
+
+**Son Güncelleme:** 2025-12-05
+**Durum:** Kararlı / Çoklu Dil Aktif

@@ -38,7 +38,7 @@ async function loadProjects() {
     }
 
     // Show loading state
-    container.innerHTML = '<div class="text-gray-400 text-center w-full py-10">Projeler yükleniyor...</div>';
+    container.innerHTML = `<div class="text-gray-400 text-center w-full py-10" data-i18n="projects.loading">${getTranslation('projects.loading')}</div>`;
 
     // Fetch projects
     const projects = await fetchProjects();
@@ -47,7 +47,7 @@ async function loadProjects() {
     container.innerHTML = '';
 
     if (projects.length === 0) {
-        container.innerHTML = '<div class="text-gray-400 text-center w-full py-10">Henüz proje eklenmemiş.</div>';
+        container.innerHTML = `<div class="text-gray-400 text-center w-full py-10" data-i18n="projects.empty">${getTranslation('projects.empty')}</div>`;
         return;
     }
 
@@ -98,7 +98,8 @@ async function loadProjects() {
         // Link Text
         const linkText = document.createElement('span');
         linkText.className = 'text-xs text-indigo-400 font-semibold uppercase tracking-wider group-hover:text-white transition-colors';
-        linkText.textContent = 'İNCELE';
+        linkText.setAttribute('data-i18n', 'projects.view');
+        linkText.textContent = getTranslation('projects.view');
 
         footer.appendChild(iconsDiv);
         footer.appendChild(linkText);
