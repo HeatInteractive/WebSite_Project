@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeler | Heat Interactive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#020410',
+                            card: 'rgba(255, 255, 255, 0.03)',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased flex flex-col min-h-screen">
+
+    <div class="glow-bg">
+        <div class="glow-blob bg-indigo-900 w-full h-96 top-0 left-0 opacity-20"></div>
+    </div>
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+    <script src="js/navbar.js"></script>
+
+    <!-- Content -->
+    <section class="pb-20 pt-48 container mx-auto px-6 flex-grow">
+        <div class="text-center mb-16 reveal">
+            <h1 class="text-4xl font-extrabold text-white mb-4">Seçkin Projeler</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">Sınırları zorlayan sanal gerçeklik deneyimlerimizi keşfedin.</p>
+        </div>
+
+        <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Projects will be loaded here dynamically -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black/40 backdrop-blur-md pt-16 pb-8 mt-auto">
+        <div
+            class="container mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <p class="text-sm text-gray-500">© 2023 Heat Interactive.</p>
+            <div class="flex gap-4 mt-4 md:mt-0 text-gray-400">
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/projects.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealOnScroll = () => {
+                const reveals = document.querySelectorAll('.reveal');
+                reveals.forEach((reveal) => {
+                    if (reveal.getBoundingClientRect().top < window.innerHeight - 100) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+
+</html>

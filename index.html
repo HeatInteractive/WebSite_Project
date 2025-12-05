@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Interactive | Geleceği Tasarlıyoruz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#020410',
+                            card: 'rgba(255, 255, 255, 0.03)',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            primary: '#6366f1',
+                            secondary: '#ec4899',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased">
+
+    <!-- Arkaplan -->
+    <div class="glow-bg">
+        <div class="glow-blob bg-indigo-600 w-96 h-96 top-0 -left-20"></div>
+        <div class="glow-blob bg-purple-600 w-96 h-96 bottom-0 -right-20 animation-delay-2000"></div>
+        <div
+            class="glow-blob bg-pink-600 w-80 h-80 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20">
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+    <script src="js/navbar.js"></script>
+
+    <!-- Hero -->
+    <section id="home" class="pt-48 pb-20 lg:pt-60 lg:pb-32 container mx-auto px-6 relative">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2 space-y-8 text-center lg:text-left z-10">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card border-indigo-500/30 text-xs font-semibold text-indigo-300 tracking-wider uppercase reveal">
+                    <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                    Geleceğin Teknolojisi
+                </div>
+
+                <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight reveal delay-100">
+                    Sınırların Ötesini <br>
+                    <span class="gradient-text-accent">Keşfedin</span>
+                </h1>
+
+                <p class="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed reveal delay-200">
+                    Heat Interactive, markanız için fiziksel dünyanın kısıtlamalarından bağımsız, hiper-gerçekçi sanal
+                    evrenler tasarlar.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 reveal delay-300">
+                    <a href="projects.html"
+                        class="group relative px-8 py-4 bg-white text-brand-bg font-bold rounded-xl overflow-hidden transition-all hover:scale-105 shadow-lg shadow-indigo-500/20">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity">
+                        </div>
+                        <span class="relative flex items-center gap-2">Projeleri Gör <i
+                                class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></span>
+                    </a>
+                    <a href="contact.html"
+                        class="px-8 py-4 glass-card rounded-xl font-bold text-white hover:bg-white/10 transition-colors border border-white/10">
+                        Bize Ulaşın
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 relative">
+                <div id="hero-image-wrapper" class="relative z-10">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-bg/80 to-transparent z-10"></div>
+                        <img src="https://zbifnmzafevagllhzibk.supabase.co/storage/v1/object/public/TestBucket/HeroImage.png"
+                            alt="VR Experience"
+                            class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute bottom-6 left-6 right-6 z-20 flex gap-4">
+                            <div class="glass-card p-4 rounded-xl flex-1 text-center bg-black/40 backdrop-blur-xl">
+                                <div class="text-2xl font-bold text-white counter" data-target="50">0</div>
+                                <div class="text-xs text-gray-400 uppercase tracking-wider">Proje</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl flex-1 text-center bg-black/40 backdrop-blur-xl">
+                                <div class="text-2xl font-bold text-white">4.9</div>
+                                <div class="text-xs text-gray-400 uppercase tracking-wider">Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Cloud -->
+    <section class="py-16 border-y border-white/5 bg-black/20">
+        <div class="container mx-auto px-6">
+            <p class="text-center text-base text-gray-400 mb-12 font-semibold tracking-widest uppercase">Güvenilir İş
+                Ortaklarımız</p>
+            <div id="companies-container"
+                class="flex flex-wrap justify-center gap-16 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+                <!-- Companies will be loaded here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Hizmetler -->
+    <section class="py-24 container mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text">Neler Yapıyoruz?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Sanal gerçeklik dünyasında ihtiyacınız olan her şey tek bir çatı
+                altında.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+                class="md:col-span-2 glass-card rounded-3xl p-8 relative overflow-hidden group hover:border-indigo-500/30 transition-colors reveal delay-100">
+                <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-40 transition-opacity">
+                    <i class="fa-solid fa-vr-cardboard text-9xl text-indigo-500 rotate-12"></i>
+                </div>
+                <div class="relative z-10">
+                    <div
+                        class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 mb-6">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Kurumsal VR Eğitim</h3>
+                    <p class="text-gray-400 max-w-md leading-relaxed">
+                        Çalışanlarınızı sanal ortamda, sıfır risk ve düşük maliyetle eğitin. İş güvenliği
+                        simülasyonları.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-8 hover:border-pink-500/30 transition-colors reveal delay-200">
+                <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center text-pink-400 mb-6">
+                    <i class="fa-solid fa-building text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Mimari Vizyon</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Projelerinizi inşa edilmeden önce müşterilerinize gezdirin. 1:1 ölçekli sanal turlar.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-8 hover:border-purple-500/30 transition-colors reveal delay-300">
+                <div
+                    class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 mb-6">
+                    <i class="fa-solid fa-gamepad text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Oyunlaştırma</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Marka etkileşimini artırmak için Unity tabanlı özel VR oyun ve deneyimleri.
+                </p>
+            </div>
+
+            <div
+                class="md:col-span-2 glass-card rounded-3xl p-8 relative overflow-hidden group hover:border-blue-500/30 transition-colors reveal delay-100">
+                <div class="absolute top-0 right-0 w-64 h-full bg-gradient-to-l from-blue-600/10 to-transparent"></div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <div
+                            class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6">
+                            <i class="fa-solid fa-cube text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Metaverse Entegrasyonu</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Markanızı Decentraland, Sandbox veya özel metaverse evrenlerine taşıyın.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black/40 backdrop-blur-md pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <a href="#"
+                        class="text-2xl font-bold text-white flex items-center justify-center md:justify-start gap-2 tracking-tight">Heat</a>
+                    <p class="text-sm text-gray-500 mt-2">© 2023 Heat Interactive. İstanbul.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"><i
+                            class="fa-brands fa-twitter"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"><i
+                            class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase and Companies Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/companies.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealOnScroll = () => {
+                const reveals = document.querySelectorAll('.reveal');
+                const windowHeight = window.innerHeight;
+                reveals.forEach((reveal) => {
+                    if (reveal.getBoundingClientRect().top < windowHeight - 100) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+
+            const counters = document.querySelectorAll('.counter');
+            let hasAnimated = false;
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / 50;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounters, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            };
+            const counterObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !hasAnimated) {
+                    animateCounters();
+                    hasAnimated = true;
+                }
+            }, { threshold: 0.5 });
+            const counterEl = document.querySelector('.counter');
+            if (counterEl) counterObserver.observe(counterEl);
+        });
+    </script>
+</body>
+
+</html>

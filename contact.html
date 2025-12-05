@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | Heat Interactive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#020410',
+                            card: 'rgba(255, 255, 255, 0.03)',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+    <script src="js/navbar.js"></script>
+
+    <section class="pt-48 pb-12 container mx-auto px-6 text-center reveal">
+        <h1 class="text-4xl font-extrabold text-white mb-4">Bize Ulaşın</h1>
+        <p class="text-gray-400 max-w-xl mx-auto">
+            Geleceği birlikte inşa edelim. Projeleriniz için bir kahve içmeye bekleriz.
+        </p>
+    </section>
+
+    <section class="pb-20 container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
+
+            <!-- Bilgiler -->
+            <div class="lg:w-1/2 space-y-8 reveal">
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="glass-card p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                        <i class="fa-solid fa-location-dot text-indigo-500 text-2xl mb-4"></i>
+                        <h3 class="text-white font-bold mb-2">Ofis</h3>
+                        <p class="text-sm text-gray-400">Teknopark İstanbul<br>Pendik / İstanbul</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl hover:bg-white/5 transition-colors">
+                        <i class="fa-solid fa-envelope text-pink-500 text-2xl mb-4"></i>
+                        <h3 class="text-white font-bold mb-2">İletişim</h3>
+                        <p class="text-sm text-gray-400">info@heatinteractive.com<br>+90 (216) 555 01 23</p>
+                    </div>
+                </div>
+
+                <div
+                    class="glass-card rounded-2xl overflow-hidden h-64 relative opacity-80 hover:opacity-100 transition-opacity">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3013.887229272336!2d29.31557731541019!3d40.92701197930896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cadaf07d2f4705%3A0x67332155845c48b2!2sTeknopark%20Istanbul!5e0!3m2!1sen!2str!4v1684321657890!5m2!1sen!2str"
+                        width="100%" height="100%" style="border:0; filter: grayscale(1) invert(1) contrast(0.8);"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="lg:w-1/2 reveal delay-100">
+                <div class="glass-card p-8 rounded-3xl">
+                    <form action="#" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="col-span-2 sm:col-span-1">
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Ad
+                                    Soyad</label>
+                                <input type="text"
+                                    class="w-full form-input rounded-xl px-4 py-3 text-white transition-all"
+                                    placeholder="Adınız">
+                            </div>
+                            <div class="col-span-2 sm:col-span-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">E-posta</label>
+                                <input type="email"
+                                    class="w-full form-input rounded-xl px-4 py-3 text-white transition-all"
+                                    placeholder="mail@ornek.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label
+                                class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Konu</label>
+                            <select class="w-full form-input rounded-xl px-4 py-3 text-white transition-all">
+                                <option class="bg-brand-bg">Genel Bilgi</option>
+                                <option class="bg-brand-bg">Proje Teklifi</option>
+                                <option class="bg-brand-bg">Kariyer</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Mesaj</label>
+                            <textarea rows="4" class="w-full form-input rounded-xl px-4 py-3 text-white transition-all"
+                                placeholder="Bize projenizden bahsedin..."></textarea>
+                        </div>
+
+                        <button type="button"
+                            class="w-full bg-gradient-to-r from-indigo-600 to-pink-600 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all transform hover:scale-[1.02]">
+                            Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 bg-black/40 backdrop-blur-md pt-16 pb-8 mt-auto">
+        <div
+            class="container mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <p class="text-sm text-gray-500">© 2023 Heat Interactive.</p>
+            <div class="flex gap-4 mt-4 md:mt-0 text-gray-400">
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealOnScroll = () => {
+                const reveals = document.querySelectorAll('.reveal');
+                reveals.forEach((reveal) => {
+                    if (reveal.getBoundingClientRect().top < window.innerHeight - 100) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+
+</html>
