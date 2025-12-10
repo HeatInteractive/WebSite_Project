@@ -1,32 +1,12 @@
-// Supabase Configuration
-const SUPABASE_URL = 'https://zbifnmzafevagllhzibk.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpiaWZubXphZmV2YWdsbGh6aWJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ3NzgxODksImV4cCI6MjA4MDM1NDE4OX0.qfsnL7UoMXVEDuIswias-VpmKL2WwS0mpyERr8HSfj4';
-
-// Initialize Supabase client
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-// Fetch companies from Supabase
+// Fetch companies from local data
 async function fetchCompanies() {
-    console.log('🔍 Fetching companies from Supabase...');
-    console.log('📍 Supabase URL:', SUPABASE_URL);
+    console.log('🔍 Fetching companies from local data...');
 
-    try {
-        const { data, error } = await supabase
-            .from('Companies')
-            .select('*')
-            .order('Name', { ascending: true });
-
-        if (error) {
-            console.error('❌ Error fetching companies:', error);
-            console.error('Error details:', JSON.stringify(error, null, 2));
-            return [];
-        }
-
-        console.log('✅ Successfully fetched companies:', data);
-        console.log('📊 Number of companies:', data ? data.length : 0);
-        return data || [];
-    } catch (err) {
-        console.error('❌ Unexpected error:', err);
+    if (window.COMPANY_DATA) {
+        console.log('✅ Successfully loaded companies from window.COMPANY_DATA');
+        return window.COMPANY_DATA;
+    } else {
+        console.error('❌ window.COMPANY_DATA is undefined. Make sure js/company-data.js is loaded.');
         return [];
     }
 }
