@@ -6,7 +6,7 @@
 **Proje Türü:** Kurumsal VR/AR Şirketi Web Sitesi  
 **Diller:** İngilizce (Varsayılan), Türkçe  
 **Teknoloji Stack:** HTML, CSS, JavaScript, Tailwind CSS, Supabase  
-**Lokasyon:** `d:\Antigravity-Projects\HeatInteractive-Web`
+**Lokasyon:** `d:\Git\WebSite_Project`
 
 ## 🎯 Proje Amacı
 
@@ -17,19 +17,22 @@ Heat Interactive, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) çöz�
 ## 📁 Dosya Yapısı
 
 ```
-HeatInteractive-Web/
-├── index.html          # Ana sayfa (TR/EN uyumlu)
-├── projects.html       # Projeler sayfası (TR/EN uyumlu)
-├── hallhunter_strawberry_project.html # Ağır Sanayi İSG Proje Detayı (TR/EN uyumlu)
-├── aboutus.html        # Hakkımızda sayfası (TR/EN uyumlu)
-├── contact.html        # İletişim sayfası (TR/EN uyumlu)
+WebSite_Project/
+├── index.html          # Ana sayfa (English only)
+├── projects.html       # Projeler sayfası (English only)
+├── agriculture_collecting_simulation.html # Tarım Simülasyonu Proje Detayı (English only)
+├── aboutus.html        # Hakkımızda sayfası (English only)
+├── contact.html        # İletişim sayfası (English only)
 ├── style.css           # Birleştirilmiş CSS dosyası ve özel efektler
 └── js/
-    ├── companies.js    # Supabase şirketler entegrasyonu
-    ├── projects.js     # Supabase projeler entegrasyonu
-    ├── navbar.js       # Dinamik navbar ve dil değiştirici
-    ├── language.js     # Dil yönetimi ve localStorage mantığı
-    └── translations.js # Çeviri sözlüğü (TR/EN)
+    ├── background.js   # Dinamik animasyonlu arkaplan efektleri
+    ├── companies.js    # Yerel company-data.js entegrasyonu
+    ├── company-data.js # Partner şirket verileri (Local JSON)
+    ├── projects.js     # Yerel projects-data.js entegrasyonu
+    ├── projects-data.js # Proje verileri (Local JSON)
+    ├── navbar.js       # Dinamik navbar (dil değiştirici kaldırıldı)
+    ├── language.js     # Dil yönetimi (legacy - kullanımda değil)
+    └── translations.js # Çeviri sözlüğü (legacy - kullanımda değil)
 ```
 
 ---
@@ -142,9 +145,9 @@ Tüm inline stiller temizlendi. Tailwind CSS, CDN üzerinden geliştirme ortamı
 *   Misyon/Vizyon metinleri çevrildi.
 *   Ekip üyeleri ve şirketin hikayesi.
 
-### 5. hallhunter_strawberry_project.html (Detay)
-*   Özel proje detay sayfası.
-*   Tüm metinler (Zorluk, Çözüm, İstatistikler) çevrildi.
+### 5. agriculture_collecting_simulation.html (Detay)
+*   Özel proje detay sayfası (eski adı: hallhunter_strawberry_project.html).
+*   Tüm metinler İngilizce olarak güncellendi (Zorluk, Çözüm, İstatistikler, Hand Tracking, Raporlama).
 
 ---
 
@@ -200,7 +203,7 @@ Tüm inline stiller temizlendi. Tailwind CSS, CDN üzerinden geliştirme ortamı
 Bu oturumda, "Agriculture Collecting Simulation" projesi üzerinde yoğunlaşıldı, site genelinde İngilizce'ye geçiş yapıldı ve teknik altyapı sadeleştirildi.
 
 ### 1. English-Only Dönüşümü 🇬🇧
-*   Çoklu dil desteği (TR/EN) tamamen kaldırıldı. Site artık saece **İngilizce** hizmet veriyor.
+*   Çoklu dil desteği (TR/EN) tamamen kaldırıldı. Site artık sadece **İngilizce** hizmet veriyor.
 *   `data-i18n` öznitelikleri ve `translations.js`, `language.js` bağımlılıkları temizlendi.
 *   Tüm sayfalar (`index.html`, `aboutus.html`, `contact.html`, vb.) hardcoded İngilizce metinlerle güncellendi.
 *   Navbar'dan dil değiştirici kaldırıldı.
@@ -212,7 +215,7 @@ Bu oturumda, "Agriculture Collecting Simulation" projesi üzerinde yoğunlaşıl
 *   `js/projects.js` ve `js/companies.js` bu yerel dosyaları okuyacak şekilde güncellendi.
 
 ### 3. Agriculture Collecting Simulation Sayfası 🍓
-Eski adı `hallhunter_strawberry_project.html` olan dosya **`agriculture_collecting_simulation.html`** olarak yeniden adlandırıldı ve baştan tasarlandı:
+Dosya **`agriculture_collecting_simulation.html`** (eski adı: `hallhunter_strawberry_project.html`) olarak yeniden adlandırıldı ve baştan tasarlandı:
 *   **İçerik:** Tamamen İngilizce ve proje detaylarına odaklı yeni metinler.
 *   **Yeni Bölümler:**
     *   **"Unique Approach"**: Resimli (simulation-image-3.jpg) ve "frame" stilli.

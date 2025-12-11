@@ -8,17 +8,30 @@ const navbarHTML = `
     <!-- Navbar -->
     <div class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
         <nav
-            class="glass-card rounded-2xl px-6 py-4 md:px-10 md:py-5 flex justify-between items-center w-full max-w-7xl shadow-2xl shadow-indigo-500/10 transition-all duration-300 hover:border-white/20 hover:bg-white/5">
+            class="glass-card rounded-2xl px-6 py-4 md:px-10 md:py-4 flex justify-between items-center w-full max-w-7xl shadow-2xl shadow-indigo-500/10 transition-all duration-300 hover:border-white/20 hover:bg-white/5">
+            
+            <!-- Logo (Left) -->
             <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <span class="text-2xl font-bold text-white tracking-tight">Heat</span>
                 <span class="text-2xl font-light text-gray-400">Interactive</span>
             </a>
-            <div class="hidden md:flex items-center gap-10">
-                <div class="flex gap-8 text-base font-medium text-gray-300">
-                    <a href="index.html" class="nav-link transition-colors">Home</a>
-                    <a href="projects.html" class="nav-link transition-colors">Projects</a>
-                    <a href="aboutus.html" class="nav-link transition-colors">About Us</a>
-                    <a href="contact.html" class="nav-link transition-colors">Contact</a>
+
+            <!-- Right Section: Links + Socials -->
+            <div class="hidden md:flex items-center gap-12">
+                <!-- Navigation Links -->
+                <div class="flex gap-8">
+                    <a href="index.html" class="nav-link text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="projects.html" class="nav-link text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white transition-colors">Projects</a>
+                    <a href="aboutus.html" class="nav-link text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white transition-colors">About Us</a>
+                    <a href="contact.html" class="nav-link text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex gap-5 text-gray-400 border-l border-white/10 pl-8">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-discord text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-tiktok text-xl"></i></a>
                 </div>
             </div>
 
