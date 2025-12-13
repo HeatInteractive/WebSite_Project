@@ -39,17 +39,16 @@ async function loadProjects() {
         // Create card structure matching the design
         const projectCard = document.createElement('a');
         projectCard.href = project.link || '#';
-        projectCard.className = 'glass-card rounded-2xl overflow-hidden group flex flex-col h-full transition-transform duration-300 hover:-translate-y-2';
-
+        projectCard.className = 'bg-[#EBEBEB] border-2 border-gray-300 rounded-3xl overflow-hidden group flex flex-col h-full shadow-sm hover:shadow-md transition-all duration-300';
         // Image Container
         const imgContainer = document.createElement('div');
-        imgContainer.className = 'h-64 overflow-hidden relative shrink-0';
+        imgContainer.className = 'h-64 overflow-hidden relative shrink-0 bg-gray-300';
 
         const img = document.createElement('img');
         // Use local path or fallback
         img.src = project.project_thumbnail || 'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=1600&auto=format&fit=crop';
         img.alt = project.project_name;
-        img.className = 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-110';
+        img.className = 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105';
 
         // Handle image error
         img.onerror = () => {
@@ -64,40 +63,35 @@ async function loadProjects() {
 
         // Title
         const title = document.createElement('h3');
-        title.className = 'text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors';
+        title.className = 'text-xl font-bold text-[#FA3624] mb-3';
         title.textContent = project.project_name;
 
         // Description
         const desc = document.createElement('p');
-        desc.className = 'text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed';
+        desc.className = 'text-black text-sm mb-6 line-clamp-3 font-bold leading-relaxed';
         desc.textContent = project.project_description;
 
         // Footer
         const footer = document.createElement('div');
-        footer.className = 'mt-auto flex justify-between items-center pt-4 border-t border-white/5';
+        footer.className = 'mt-auto flex justify-between items-center pt-6 border-t-2 border-gray-300';
 
-        // Icons (Static for now, or dynamic tags if added to JSON)
+        // Icons
         const iconsDiv = document.createElement('div');
-        iconsDiv.className = 'flex gap-3 text-gray-500';
+        iconsDiv.className = 'flex gap-3';
 
-        // Example: Add icons based on tags if available, else default
-        if (project.tags && Array.isArray(project.tags)) {
-            project.tags.forEach(tag => {
-                // Simple mapping or text for now
-                // For now keeping the static icons as per previous design, 
-                // but ideally these should be dynamic. 
-                // Keeping consistent with previous static icons for visual stability
-            });
-        }
-
+        // Two placeholder icons as per design
         iconsDiv.innerHTML = `
-            <i class="fa-brands fa-unity hover:text-white transition-colors"></i>
-            <i class="fa-solid fa-vr-cardboard hover:text-white transition-colors"></i>
+            <div class="w-8 h-8 bg-[#D9D9D9] rounded flex items-center justify-center text-gray-500">
+                <i class="fa-solid fa-layer-group text-sm"></i>
+            </div>
+            <div class="w-8 h-8 bg-[#D9D9D9] rounded flex items-center justify-center text-gray-500">
+                <i class="fa-solid fa-cube text-sm"></i>
+            </div>
         `;
 
         // Link Text
         const linkText = document.createElement('span');
-        linkText.className = 'text-xs text-indigo-400 font-semibold uppercase tracking-wider group-hover:text-white transition-colors';
+        linkText.className = 'text-sm text-[#FA3624] font-bold uppercase tracking-wider group-hover:text-red-700 transition-colors';
         linkText.textContent = 'VIEW PROJECT';
 
         footer.appendChild(iconsDiv);

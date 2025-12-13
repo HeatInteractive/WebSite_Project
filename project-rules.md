@@ -228,3 +228,91 @@ Dosya **`agriculture_collecting_simulation.html`** (eski adı: `hallhunter_straw
 *   `js/projects.js` içindeki `getTranslation` hatası giderildi.
 *   Eksik proje thumbnail sorunu `hero-image.jpg` kullanılarak çözüldü.
 
+---
+
+## 📝 13 Aralık 2025 Oturumu - Tasarım Yenileme 🎨
+
+Bu oturumda, tüm site genelinde kapsamlı bir tasarım yenilemesi yapıldı. Karanlık/glow temadan modern, temiz ve aydınlık bir tasarıma geçiş sağlandı.
+
+### 1. Yeni Tasarım Sistemi
+
+#### Renk Paleti (Güncellenmiş)
+```css
+/* Ana Renkler */
+--bg-white: #FFFFFF          /* Ana arka plan */
+--bg-light-gray: #EBEBEB     /* İkincil arka plan / Kartlar */
+--bg-input: #D9D9D9          /* Form input arka planı */
+
+/* Vurgu Renkleri */
+--accent-red: #FA3624        /* Birincil vurgu (başlıklar, butonlar, ikonlar) */
+--text-black: #111111        /* Ana başlıklar */
+--text-gray: #6B7280         /* Gövde metni */
+
+/* Çerçeve ve Kenarlıklar */
+--border-gray: #D1D5DB       /* Kart kenarlıkları (border-gray-300) */
+```
+
+#### Tipografi Standartları
+*   **Ana Başlıklar (H1):** `text-5xl lg:text-7xl font-extrabold text-[#111] uppercase tracking-tight`
+*   **Alt Başlıklar (H2):** `text-3xl md:text-4xl font-bold text-[#111]`
+*   **Gövde Metni:** `text-xl text-gray-600 font-medium leading-relaxed`
+*   **Vurgu Metni:** `text-[#FA3624] font-bold`
+
+#### Kart/Bileşen Stilleri
+*   **Standart Kart:** `bg-[#EBEBEB] border-2 border-gray-300 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all`
+*   **Görsel Konteyneri:** `rounded-[3rem] overflow-hidden shadow-lg`
+*   **Form Input:** `bg-[#D9D9D9] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FA3624]`
+*   **Buton (Birincil):** `bg-[#FA3624] text-white font-bold rounded-xl px-10 py-4 hover:bg-red-600 transition-colors shadow-lg`
+
+### 2. Sayfa Bazlı Değişiklikler
+
+#### projects.html
+*   **Arka Plan:** Düz beyaz (`bg-white`), tüm glow efektleri kaldırıldı
+*   **Başlık:** "FEATURED PROJECTS" - büyük, siyah, uppercase
+*   **Açıklama:** "We believe every client vision deserves a unique digital blueprint..."
+*   **Proje Kartları:** Açık gri zemin, kırmızı başlıklar, siyah kalın açıklama metni, gri ikon kutuları, kırmızı "VIEW PROJECT" linki
+
+#### contact.html
+*   **Header:** "CONTACT US" başlığı, beyaz arka plan
+*   **Layout:** İki sütunlu (Sol: Office/Contact kartları + Google Map, Sağ: İletişim formu)
+*   **Kartlar:** `#EBEBEB` zemin, kırmızı başlıklar, gri kenarlıklar
+*   **Form:** Kırmızı etiketler, gri input alanları, tam genişlikte kırmızı "SEND" butonu
+
+#### aboutus.html
+*   **Bölüm 1 - "The Intersection of Passion and Purpose":** Beyaz arka plan, büyük siyah başlık
+*   **Bölüm 2 - "Founding Partners":** Açık gri arka plan (`#EBEBEB`), ortalanmış partner görselleri
+*   **Bölüm 3 - "Our Journey":** Beyaz arka plan, SVG watermark efekti korundu
+
+#### agriculture_collecting_simulation.html
+*   **Hero:** Tam ekran video arka planı korundu (karanlık overlay ile)
+*   **İçerik Bölümleri:** Beyaz ve açık gri arka planlar arası geçiş
+*   **"Digitizing the Field":** Beyaz zemin, sol metin/sağ görsel
+*   **"Train Like You Work":** Açık gri zemin, 3 beyaz kart (01/02/03 numaralı)
+*   **"Simulating Precision":** Beyaz zemin, sağ metin/sol görsel
+*   **"Precision in Your Hands":** Açık gri zemin, sol metin/sağ görsel
+*   **"Detailed Reporting":** Beyaz zemin, sol görsel/sağ metin
+*   **"Powered by Unity":** Açık gri zemin, sol metin/sağ görsel, beyaz ikon kutuları
+*   **Footer:** Beyaz/açık gri, modern sosyal medya ikonları
+
+### 3. Kaldırılan Öğeler
+*   Tüm `glass-card` dark theme efektleri
+*   `glow-bg` ve `glow-blob` animasyonları
+*   Gradient text efektleri (artık solid renkler kullanılıyor)
+*   Karanlık arka planlar ve overlay'ler (hero bölümü hariç)
+*   Indigo/Pink vurgu renkleri (artık kırmızı vurgu kullanılıyor)
+
+### 4. Tutarlılık Kuralları
+*   **Bölüm Arkaplanları:** Beyaz ve `#EBEBEB` arası dönüşümlü kullanım
+*   **Kartlar:** Her zaman `rounded-3xl` veya `rounded-[3rem]` köşeler
+*   **Kenarlıklar:** `border-2 border-gray-300` standart
+*   **Gölgeler:** Hafif (`shadow-sm`) veya orta (`shadow-lg`), koyu gölgeler yok
+*   **Hover Efektleri:** `hover:shadow-md` veya `hover:scale-105` gibi minimal animasyonlar
+*   **İkonlar:** Kırmızı (`#FA3624`) veya gri tonlarda
+
+### 5. Responsive Davranış
+*   Tüm grid layoutlar `lg:grid-cols-2` veya `md:grid-cols-3` ile responsive
+*   Mobilde tek sütun, desktop'ta çift sütun düzeni
+*   Başlık boyutları `text-5xl lg:text-7xl` formatında responsive
+
+**Son Güncelleme:** 2025-12-13  
+**Durum:** Kararlı / Modern Light Theme Aktif
