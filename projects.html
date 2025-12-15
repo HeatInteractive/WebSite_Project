@@ -11,6 +11,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -41,21 +42,26 @@
     <script src="js/navbar.js"></script>
 
     <!-- Header Section -->
-    <section class="container mx-auto px-6 pt-40 pb-12 reveal">
-        <h1 class="text-5xl lg:text-7xl font-extrabold text-[#111] mb-6 tracking-tight uppercase">
-            Featured Projects
-        </h1>
-        <p class="text-xl text-gray-600 max-w-3xl leading-relaxed font-medium">
-            We believe every client vision deserves a unique digital blueprint. Discover our virtual reality experiences
-            that push boundaries.
-        </p>
+    <section class="w-full bg-white dark:bg-[#111111] pt-40 pb-12 transition-colors duration-300">
+        <div class="container mx-auto px-6 reveal">
+            <h1 class="text-5xl lg:text-7xl font-extrabold text-[#111] dark:text-white mb-6 tracking-tight uppercase">
+                Featured Projects
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed font-medium">
+                We believe every client vision deserves a unique digital blueprint. Discover our virtual reality
+                experiences
+                that push boundaries.
+            </p>
+        </div>
     </section>
 
     <!-- Projects Grid -->
-    <section class="container mx-auto px-6 pt-4 pb-20 reveal delay-200">
-        <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Projects will be loaded dynamically here -->
-            <div class="text-gray-400 text-center w-full py-10">Loading projects...
+    <section class="w-full bg-[#EBEBEB] dark:bg-[#1a1a1a] py-20 flex-grow transition-colors duration-300">
+        <div class="container mx-auto px-6 reveal delay-200">
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be loaded dynamically here -->
+                <div class="text-gray-400 text-center w-full py-10">Loading projects...
+                </div>
             </div>
         </div>
     </section>

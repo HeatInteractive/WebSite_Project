@@ -4,13 +4,13 @@
 
 **Proje Adı:** Heat Interactive Website  
 **Proje Türü:** Kurumsal VR/AR Şirketi Web Sitesi  
-**Diller:** İngilizce (Varsayılan), Türkçe  
-**Teknoloji Stack:** HTML, CSS, JavaScript, Tailwind CSS, Supabase  
+**Diller:** İngilizce (English-Only)  
+**Teknoloji Stack:** HTML, CSS, JavaScript, Tailwind CSS (CDN), Local JSON Data  
 **Lokasyon:** `d:\Git\WebSite_Project`
 
 ## 🎯 Proje Amacı
 
-Heat Interactive, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) çözümleri sunan bir teknoloji şirketinin kurumsal web sitesidir. Site, şirketin hizmetlerini, projelerini ve iş ortaklarını modern ve etkileyici bir tasarımla sunmaktadır. Artık çoklu dil desteği ile global bir kitleye hitap etmektedir.
+Heat Interactive, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) çözümleri sunan bir teknoloji şirketinin kurumsal web sitesidir. Site, modern ve aydınlık (Light Theme) bir tasarımla şirketin hizmetlerini, projelerini ve iş ortaklarını sunmaktadır. Basit, hızlı ve etkileyici bir kullanıcı deneyimi hedeflenmiştir.
 
 ---
 
@@ -18,173 +18,99 @@ Heat Interactive, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) çöz�
 
 ```
 WebSite_Project/
-├── index.html          # Ana sayfa (English only)
-├── projects.html       # Projeler sayfası (English only)
-├── agriculture_collecting_simulation.html # Tarım Simülasyonu Proje Detayı (English only)
-├── aboutus.html        # Hakkımızda sayfası (English only)
-├── contact.html        # İletişim sayfası (English only)
-├── style.css           # Birleştirilmiş CSS dosyası ve özel efektler
+├── index.html          # Ana sayfa
+├── projects.html       # Projeler listesi
+├── agriculture_collecting_simulation.html # Proje detay sayfası
+├── aboutus.html        # Hakkımızda sayfası
+├── contact.html        # İletişim sayfası
+├── style.css           # Global stiller (Tailwind harici özelleştirmeler)
+├── images/             # Tüm görsel varlıklar
 └── js/
-
-    ├── companies.js    # Yerel company-data.js entegrasyonu
-    ├── company-data.js # Partner şirket verileri (Local JSON)
-    ├── projects.js     # Yerel projects-data.js entegrasyonu
-    ├── projects-data.js # Proje verileri (Local JSON)
-    ├── navbar.js       # Dinamik navbar (dil değiştirici kaldırıldı)
-    ├── language.js     # Dil yönetimi (legacy - kullanımda değil)
-    └── translations.js # Çeviri sözlüğü (legacy - kullanımda değil)
+    ├── companies.js    # Şirket/Partner logolarını render eder
+    ├── company-data.js # Partner veri kaynağı (JSON)
+    ├── projects.js     # Projeleri render eder
+    ├── projects-data.js # Proje veri kaynağı (JSON)
+    └── navbar.js       # Dinamik navigasyon menüsü
 ```
 
 ---
 
 ## 🎨 Tasarım Sistemi
 
-### Renk Paleti
+### Renk Paleti (Light Theme)
+
+Site genelinde aydınlık, kurumsal ve ferah bir görünüm hakimdir.
 
 ```css
-/* Marka Renkleri */
---brand-bg: #020410         /* Derin Uzay Siyahı - Ana arkaplan */
---brand-card: rgba(255, 255, 255, 0.03)  /* Ultra hafif cam efekti */
---brand-border: rgba(255, 255, 255, 0.08) /* Hafif kenarlık */
---brand-primary: #6366f1    /* Indigo - Birincil vurgu */
---brand-secondary: #ec4899  /* Pink - İkincil vurgu */
+/* Ana Renkler */
+--bg-white: #FFFFFF          /* Temel arka plan */
+--bg-light-gray: #ECECEC     /* Bölüm arka planları / Kartlar için standart gri */
+--bg-accent-gray: #EBEBEB    /* Alternatif açık gri */
 
-/* Metin Renkleri */
---text-white: #ffffff
---text-gray: #e2e8f0
---text-gray-dark: #94a3b8
+/* Vurgu ve Metin */
+--accent-red: #FA3624        /* Heat Interactive Kırmızısı (Butonlar, İkon Hover, Başlıklar) */
+--text-black: #000000        /* Ana başlıklar */
+--text-dark-gray: #333333    /* Alt başlıklar */
+--text-body: #4B5563         /* Gövde metinleri (Gray-600/700) */
+
+/* Kenarlıklar */
+--border-gray: #D1D5DB       /* Kart ve input kenarlıkları */
 ```
 
 ### Tipografi
-
 **Font Ailesi:** Outfit (Google Fonts)  
-**Ağırlıklar:** 300, 400, 500, 700, 800
-
----
-
-## 🌍 Çoklu Dil Sistemi (YENİ)
-
-### Mimari
-Site, URL yönlendirmesi yerine **istemci taraflı (client-side)** bir çeviri sistemi kullanır.
-
-1.  **Veri Kaynağı:** `js/translations.js` dosyası TR ve EN çevirilerini içeren büyük bir JSON objesidir.
-2.  **Mantık:** `js/language.js` dosyası:
-    *   `localStorage`'dan dil tercihini okur ('tr' veya 'en').
-    *   Sayfa yüklendiğinde `data-i18n` özniteliğine sahip tüm elementleri bulur.
-    *   Seçili dile göre içeriği günceller.
-3.  **Kullanıcı Arayüzü:** `js/navbar.js` içindeki dil değiştirici (TR | EN) butonları.
-
-### Kullanım
-
-**HTML:**
-```html
-<h1 data-i18n="home.hero.title">Sınırların Ötesini Keşfedin</h1>
-```
-
-**JavaScript (Dinamik İçerik İçin):**
-```javascript
-// js/projects.js gibi dosyalarda
-element.textContent = getTranslation('projects.loading'); 
-```
-
-**Kalıcılık:**
-Dil tercihi `localStorage.setItem('heat_lang', 'en')` ile tarayıcıda saklanır.
+**Stil:** Modern, temiz, yüksek okunabilirlik.
+**Başlıklar:** Genellikle BÜYÜK HARF (Uppercase), Bold/Extrabold.
 
 ---
 
 ## 🔧 Teknik Detaylar
 
+### Veri Yönetimi (Local JSON)
+Veri tabanı veya backend bağımlılığı yoktur. Tüm dinamik içerikler (projeler, logolar) yerel JavaScript dosyalarından (`js/projects-data.js`, `js/company-data.js`) okunur. Bu sayede site statik hosting üzerinde sorunsuz çalışır.
+
 ### CSS Mimarisi
-**Dosya:** `style.css`
-Tüm inline stiller temizlendi. Tailwind CSS, CDN üzerinden geliştirme ortamında kullanılıyor. Prodüksiyon için build işlemi önerilir.
-
-### JavaScript Modülleri
-
-1.  **js/navbar.js**:
-    *   Tüm sayfalara navbar'ı dinamik olarak enjekte eder.
-    *   Dil değiştirme butonlarını içerir.
-    *   Mobil menü mantığını yönetir.
-
-2.  **js/projects.js**:
-    *   Supabase'den projeleri çeker.
-    *   Çoklu dil desteği için `getTranslation()` fonksiyonunu kullanır.
-
-3.  **js/companies.js**:
-    *   Supabase'den iş ortağı logolarını çeker.
-
-### Supabase Entegrasyonu
-
-**Bağlantı Bilgileri:**
-*   `SUPABASE_URL`: `https://zbifnmzafevagllhzibk.supabase.co`
-*   `SUPABASE_ANON_KEY`: (Public Key - `js/projects.js` ve `js/companies.js` içinde tanımlı)
-
-**Tablolar:**
-*   `Companies`: İsim, Logo URL
-*   `Projects`: Proje Adı, Açıklama, Görsel URL
+*   **Framework:** Tailwind CSS (CDN)
+*   **Özel Stiller:** `style.css` dosyasında Tailwind ile yapılamayan özel animasyonlar (`scroll-reveal`, vb.) ve cam efektleri (`glass-card` - güncel kullanımı sınırlı) bulunur.
+*   **Responsive:** Mobil öncelikli (Mobile-First) yaklaşım. `lg:` ve `md:` breakpointleri ile masaüstü düzenleri kurgulanır.
 
 ---
 
-## 📄 Sayfa Detayları
+## � Sayfa Detayları
 
 ### 1. index.html (Ana Sayfa)
-*   Hero Section (Supabase görseli ile)
-*   Logo Cloud (Dinamik)
-*   Hizmetler (Bento Grid)
-*   Çeviri desteği eklendi.
+*   **Hero:** Sağ tarafta konumlanmış, responsive 3D/Modern arka plan görseli (`hero-bg-modern.png`).
+*   **Platforms We Work On:** Unity, WebGL, iOS, Android ikonlarını içeren, hover efektli (`text-black` -> `text-[#FA3624]`) özel bölüm.
+*   **Our Services:** `heattitle-bg.png` arka planı üzerinde, yatay flex kartlar. Görsel ve metin ayrık, birbirinin üzerine binmez.
 
-### 2. projects.html (Projeler)
-*   Supabase'den dinamik veri çekimi.
-*   Yükleme ekranı metinleri çevrildi.
-*   Kart yapısı ve "İncele" butonu çevrildi.
+### 2. projects.html
+*   Yerel veriden çekilen proje listesi.
+*   Kategori filtreleme (All, VR, AR, Mobile).
+*   Temiz grid yapısı.
 
-### 3. contact.html (İletişim)
-*   Form alanı placeholder'ları ve etiketleri çevrildi.
-*   Ofis adres bilgileri.
-
-### 4. aboutus.html (Hakkımızda)
-*   Misyon/Vizyon metinleri çevrildi.
-*   Ekip üyeleri ve şirketin hikayesi.
-
-### 5. agriculture_collecting_simulation.html (Detay)
-*   Özel proje detay sayfası (eski adı: hallhunter_strawberry_project.html).
-*   Tüm metinler İngilizce olarak güncellendi (Zorluk, Çözüm, İstatistikler, Hand Tracking, Raporlama).
+### 3. agriculture_collecting_simulation.html
+*   Örnek proje detay sayfası.
+*   Video arka planlı hero.
+*   Özelleştirilmiş grid düzeni ve "Frame" stilli görseller.
 
 ---
 
-## 🔍 Debug ve Sorun Giderme
+## 📅 Versiyon Geçmişi / Log
 
-### Yaygın Sorunlar ve Çözümler
+**v2.1 - 15 Aralık 2025 (Son Güncelleme)**
+*   **Hero Revizyonu:** CSS gradient yerine özel 3D render görsel kullanıldı. Görsel boyutlandırması `height` yerine `width` bazlı yapılarak responsive hale getirildi.
+*   **Platforms Bölümü:** Yeni "Platforms We Work On" bölümü eklendi. İkonlar siyah renkten kırmızıya dönen hover efektine sahip.
+*   **Services Düzeni:** "Our Services" kartları görsel ve metin çakışmasını önlemek için Flex-Row yapısına geçirildi (`object-fill` ile görsel yerleşimi optimize edildi).
+*   **Arka Plan Entegrasyonu:** "Platforms" ve "Services" bölümleri, ortak bir `heattitle-bg.png` arka plan görseli kapsayıcısı içine alındı.
+*   **Temizlik:** Kullanılmayan Supabase, Çoklu Dil ve eski Dark Theme kodları/kuralları temizlendi.
 
-1.  **Dil Değişmiyor:**
-    *   `localStorage` temizlemeyi deneyin.
-    *   Console'da `translations[currentLang]` objesinin dolu olup olmadığına bakın.
+**v2.0 - 13 Aralık 2025**
+*   **Light Theme Geçişi:** Karanlık temadan aydınlık (`bg-white`, `bg-[#ECECEC]`) yapıya tam geçiş.
+*   **Renk Güncellemesi:** `#FA3624` (Kırmızı) ana vurgu rengi oldu.
 
-2.  **Projeler/Şirketler Yüklenmiyor:**
-    *   Supabase bağlantısını kontrol edin.
-    *   Supabase projesinin "Paused" modunda olmadığından emin olun.
-    *   Tarayıcı konsolundaki (F12) hataları inceleyin.
-
-3.  **Sayfa Boş/HTML Hatalı:**
-    *   Script etiketlerinin `<body>` kapanmadan hemen önce olduğundan emin olun.
-    *   `js/navbar.js`'in yüklendiğinden emin olun.
-
----
-
-## 📅 Versiyon Geçmişi
-
-**v1.2** - Çoklu Dil Desteği (Current)
-*   TR/EN dil seçeneği eklendi.
-*   `translations.js` ve `language.js` oluşturuldu.
-*   `navbar.js` güncellendi (Dil değiştirici).
-*   Tüm HTML sayfaları `data-i18n` ile işaretlendi.
-
-**v1.1** - Dinamik İçerik
-*   `projects.html` dinamik hale getirildi (Supabase).
-*   `hallhunter_strawberry_project.html` eklendi.
-
-**v1.0** - İlk Sürüm
-*   Temel sayfa yapıları.
-*   CSS konsolidasyonu.
+**v1.5 - 10 Aralık 2025**
+*   **English-Only:** Türkçe desteği kaldırıldı.
+*   **Data Migration:** Supabase kaldırıldı, yerel JSON'a geçildi.
 
 ---
 
@@ -192,131 +118,3 @@ Tüm inline stiller temizlendi. Tailwind CSS, CDN üzerinden geliştirme ortamı
 
 **E-posta:** hello@heatinteractive.com
 **Adres:** Maslak Mah. Büyükdere Cad. Spine Tower No: 243 Sarıyer / İstanbul
-
-**Son Güncelleme:** 2025-12-05
-**Durum:** Kararlı / Çoklu Dil Aktif
-
----
-
-## 📝 10 Aralık 2025 Oturumu Özeti
-
-Bu oturumda, "Agriculture Collecting Simulation" projesi üzerinde yoğunlaşıldı, site genelinde İngilizce'ye geçiş yapıldı ve teknik altyapı sadeleştirildi.
-
-### 1. English-Only Dönüşümü 🇬🇧
-*   Çoklu dil desteği (TR/EN) tamamen kaldırıldı. Site artık sadece **İngilizce** hizmet veriyor.
-*   `data-i18n` öznitelikleri ve `translations.js`, `language.js` bağımlılıkları temizlendi.
-*   Tüm sayfalar (`index.html`, `aboutus.html`, `contact.html`, vb.) hardcoded İngilizce metinlerle güncellendi.
-*   Navbar'dan dil değiştirici kaldırıldı.
-
-### 2. Veri Migrasyonu (Supabase -> Local) 💾
-*   Supabase bağımlılığı **kaldırıldı**. Projeler ve partner verileri artık yerel JSON dosyalarından çekiliyor.
-*   YENİ: `js/projects-data.js` - Proje verilerini tutar.
-*   YENİ: `js/company-data.js` - Partner/Şirket verilerini tutar.
-*   `js/projects.js` ve `js/companies.js` bu yerel dosyaları okuyacak şekilde güncellendi.
-
-### 3. Agriculture Collecting Simulation Sayfası 🍓
-Dosya **`agriculture_collecting_simulation.html`** (eski adı: `hallhunter_strawberry_project.html`) olarak yeniden adlandırıldı ve baştan tasarlandı:
-*   **İçerik:** Tamamen İngilizce ve proje detaylarına odaklı yeni metinler.
-*   **Yeni Bölümler:**
-    *   **"Unique Approach"**: Resimli (simulation-image-3.jpg) ve "frame" stilli.
-    *   **"Precision in Your Hands"**: Hand tracking önemini anlatan, Sol Resim/Sağ Metin düzeninde (simulation-image-2.jpg).
-    *   **"Detailed Reporting"**: Sağ Resim/Sol Metin düzeninde raporlama bölümü (simulation-image-4.jpg).
-    *   **"Video Showcase"**: Sayfanın en altına taşındı.
-*   **Tasarım Dili (Frame Style):** Sayfadaki tüm büyük görsellerden "glow" efekti kaldırıldı ve **`glass-card p-2 rounded-3xl`** stili ile bir çerçeve içine alınarak tutarlı bir görünüm sağlandı.
-
-### 4. Düzeltmeler 🛠️
-*   `js/projects.js` içindeki `getTranslation` hatası giderildi.
-*   Eksik proje thumbnail sorunu `hero-image.jpg` kullanılarak çözüldü.
-
----
-
-## 📝 13 Aralık 2025 Oturumu - Tasarım Yenileme 🎨
-
-Bu oturumda, tüm site genelinde kapsamlı bir tasarım yenilemesi yapıldı. Karanlık/glow temadan modern, temiz ve aydınlık bir tasarıma geçiş sağlandı.
-
-### 1. Yeni Tasarım Sistemi
-
-#### Renk Paleti (Güncellenmiş)
-```css
-/* Ana Renkler */
---bg-white: #FFFFFF          /* Ana arka plan */
---bg-light-gray: #EBEBEB     /* İkincil arka plan / Kartlar */
---bg-input: #D9D9D9          /* Form input arka planı */
-
-/* Vurgu Renkleri */
---accent-red: #FA3624        /* Birincil vurgu (başlıklar, butonlar, ikonlar) */
---text-black: #111111        /* Ana başlıklar */
---text-gray: #6B7280         /* Gövde metni */
-
-/* Çerçeve ve Kenarlıklar */
---border-gray: #D1D5DB       /* Kart kenarlıkları (border-gray-300) */
-```
-
-#### Tipografi Standartları
-*   **Ana Başlıklar (H1):** `text-5xl lg:text-7xl font-extrabold text-[#111] uppercase tracking-tight`
-*   **Alt Başlıklar (H2):** `text-3xl md:text-4xl font-bold text-[#111]`
-*   **Gövde Metni:** `text-xl text-gray-600 font-medium leading-relaxed`
-*   **Vurgu Metni:** `text-[#FA3624] font-bold`
-
-#### Kart/Bileşen Stilleri
-*   **Standart Kart:** `bg-[#EBEBEB] border-2 border-gray-300 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all`
-*   **Görsel Konteyneri:** `rounded-[3rem] overflow-hidden shadow-lg`
-*   **Form Input:** `bg-[#D9D9D9] rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#FA3624]`
-*   **Buton (Birincil):** `bg-[#FA3624] text-white font-bold rounded-xl px-10 py-4 hover:bg-red-600 transition-colors shadow-lg`
-
-### 2. Sayfa Bazlı Değişiklikler
-
-#### projects.html
-*   **Arka Plan:** Düz beyaz (`bg-white`), tüm glow efektleri kaldırıldı
-*   **Başlık:** "FEATURED PROJECTS" - büyük, siyah, uppercase
-*   **Açıklama:** "We believe every client vision deserves a unique digital blueprint..."
-*   **Proje Kartları:** Açık gri zemin, kırmızı başlıklar, siyah kalın açıklama metni, gri ikon kutuları, kırmızı "VIEW PROJECT" linki
-
-#### contact.html
-*   **Header:** "CONTACT US" başlığı, beyaz arka plan
-*   **Layout:** İki sütunlu (Sol: Office/Contact kartları + Google Map, Sağ: İletişim formu)
-*   **Kartlar:** `#EBEBEB` zemin, kırmızı başlıklar, gri kenarlıklar
-*   **Form:** Kırmızı etiketler, gri input alanları, tam genişlikte kırmızı "SEND" butonu
-
-#### aboutus.html
-*   **Bölüm 1 - "The Intersection of Passion and Purpose":** Beyaz arka plan, büyük siyah başlık
-*   **Bölüm 2 - "Founding Partners":** Açık gri arka plan (`#EBEBEB`), ortalanmış partner görselleri
-*   **Bölüm 3 - "Our Journey":** Beyaz arka plan, SVG watermark efekti korundu
-
-#### agriculture_collecting_simulation.html
-*   **Hero:** Tam ekran video arka planı korundu (karanlık overlay ile)
-*   **Bölüm Ayrımı:** Sayfa boyunca uzanan belirgin çizgiler (`w-full h-0.5 bg-gray-300`)
-*   **Bölüm Stilleri:**
-    *   "Digitizing the Field": Beyaz zemin (`bg-white`), sol metin/sağ görsel
-    *   "Train Like You Work": Gri zemin (`bg-gray-100`), 3 bağımsız beyaz kart (`bg-white`, `border-gray-200`, `shadow-lg`)
-    *   "Simulating Precision" (Unique Approach): Beyaz zemin, sağ metin/sol görsel
-    *   "Precision in Your Hands": Gradient kırmızı/beyaz zemin, sol metin/sağ görsel
-    *   "Detailed Reporting": Gri gradient (`from-gray-50 to-gray-100`), sol görsel/sağ metin
-    *   "Powered by Unity": Kırmızı/turuncu gradient zemin, sol metin/sağ görsel
-*   **Kart Stilleri:**
-    *   Feature Kartları: `bg-gray-50`, `border-2 border-gray-200`, `shadow-md`
-    *   Image Kartları: Belirgin outline (`outline-4 outline-offset-2 outline-gray-400`), `shadow-xl`, `rounded-[3rem]`
-*   **Footer:** Beyaz/açık gri, modern sosyal medya ikonları
-
-### 3. Kaldırılan Öğeler
-*   Tüm `glass-card` dark theme efektleri
-*   `glow-bg` ve `glow-blob` animasyonları
-*   Gradient text efektleri (artık solid renkler kullanılıyor)
-*   Karanlık arka planlar ve overlay'ler (hero bölümü hariç)
-*   Indigo/Pink vurgu renkleri (artık kırmızı vurgu kullanılıyor)
-
-### 4. Tutarlılık Kuralları
-*   **Bölüm Arkaplanları:** Beyaz ve `#EBEBEB` arası dönüşümlü kullanım
-*   **Kartlar:** Her zaman `rounded-3xl` veya `rounded-[3rem]` köşeler
-*   **Kenarlıklar:** `border-2 border-gray-300` standart
-*   **Gölgeler:** Hafif (`shadow-sm`) veya orta (`shadow-lg`), koyu gölgeler yok
-*   **Hover Efektleri:** `hover:shadow-md` veya `hover:scale-105` gibi minimal animasyonlar
-*   **İkonlar:** Kırmızı (`#FA3624`) veya gri tonlarda
-
-### 5. Responsive Davranış
-*   Tüm grid layoutlar `lg:grid-cols-2` veya `md:grid-cols-3` ile responsive
-*   Mobilde tek sütun, desktop'ta çift sütun düzeni
-*   Başlık boyutları `text-5xl lg:text-7xl` formatında responsive
-
-**Son Güncelleme:** 2025-12-13  
-**Durum:** Kararlı / Modern Light Theme Aktif

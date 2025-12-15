@@ -59,10 +59,20 @@
 
     <!-- Hero -->
     <!-- Hero -->
-    <section id="home" class="pt-48 lg:pt-40 min-h-screen flex flex-col justify-between relative">
-        <!-- Hero Background Image (Aligned to 'Discover' text via left-6) -->
-        <img src="images/main-page/heroimage.jpg" alt="Hero Background"
-            class="absolute top-0 mt-48 lg:mt-40 right-0 left-1/25 z-[-10] w-full h-full object-contain object-right-top pointer-events-none opacity-100 scale-[0.84] -translate-x-[10%] origin-top">
+    <section id="home"
+        class="pt-48 lg:pt-40 min-h-screen flex flex-col justify-between relative bg-white overflow-hidden">
+
+        <!-- Hero Background Image -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <img src="images/main-page/heroimage.png" alt="Digital Experience Background"
+                class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[50%] lg:w-[45%] xl:w-[70%] h-auto object-contain z-[-1]">
+
+            <!-- Mobile: Optional subtle version or hidden to keep text legible -->
+            <img src="images/main-page/heroimage.png" alt="Digital Experience Background"
+                class="lg:hidden absolute bottom-0 right-0 w-3/4 opacity-20 z-[-1]">
+        </div>
+
+        <!-- Hero Background Image REMOVED -->
 
         <!-- Main Hero Content -->
         <div class="container mx-auto px-6 flex-grow flex items-start relative z-10">
@@ -105,7 +115,7 @@
             <div class="w-full border-t-2 border-[#bbbbbb]"></div>
 
             <!-- What Makes Us Different Section -->
-            <section class="w-full bg-white py-12 relative z-10">
+            <section class="w-full bg-[#ECECEC] py-12 relative z-10">
                 <div class="container mx-auto px-6">
                     <div class="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
                         <!-- Left: Headings -->
@@ -138,121 +148,167 @@
         </div>
     </section>
 
+
+    <!-- Platforms We Work On Section -->
+    <section class="py-12 bg-[#ECECEC]">
+        <div class="container mx-auto px-6">
+            <div
+                class="bg-white border-2 border-gray-300 rounded-[2rem] shadow-[0_10px_20px_rgba(0,0,0,0.05)] p-8 max-w-4xl mx-auto flex flex-col items-center justify-center gap-6">
+                <h3 class="text-3xl font-bold text-black uppercase tracking-tight">
+                    PLATFORMS WE WORK ON
+                </h3>
+                <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+                    <!-- Unity -->
+                    <div
+                        class="flex flex-col items-center gap-2 group cursor-pointer hover:scale-110 transition-transform">
+                        <i
+                            class="fa-brands fa-unity text-4xl text-black group-hover:text-[#FA3624] transition-colors"></i>
+                        <span class="text-sm font-semibold text-black group-hover:text-[#FA3624]">Unity</span>
+                    </div>
+                    <!-- WebGL (Using Globe icon as generic Web representation) -->
+                    <div
+                        class="flex flex-col items-center gap-2 group cursor-pointer hover:scale-110 transition-transform">
+                        <i
+                            class="fa-brands fa-chrome text-4xl text-black group-hover:text-[#FA3624] transition-colors"></i>
+                        <span class="text-sm font-semibold text-black group-hover:text-[#FA3624]">WebGL</span>
+                    </div>
+                    <!-- iOS -->
+                    <div
+                        class="flex flex-col items-center gap-2 group cursor-pointer hover:scale-110 transition-transform">
+                        <i
+                            class="fa-brands fa-apple text-4xl text-black group-hover:text-[#FA3624] transition-colors"></i>
+                        <span class="text-sm font-semibold text-black group-hover:text-[#FA3624]">iOS</span>
+                    </div>
+                    <!-- Android -->
+                    <div
+                        class="flex flex-col items-center gap-2 group cursor-pointer hover:scale-110 transition-transform">
+                        <i
+                            class="fa-brands fa-android text-4xl text-black group-hover:text-[#FA3624] transition-colors"></i>
+                        <span class="text-sm font-semibold text-black group-hover:text-[#FA3624]">Android</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Our Services Section -->
-    <section class="py-24 container mx-auto px-6">
-        <!-- Header -->
-        <div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
-            <h2 class="text-4xl md:text-6xl font-extrabold text-black uppercase tracking-tight shadow-black">
-                OUR SERVICES
-            </h2>
-            <a href="projects.html"
-                class="flex items-center gap-2 bg-black text-white px-8 py-3 rounded-lg font-bold hover:bg-gray-800 transition-colors">
-                <span>View Projects</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- Services List -->
-        <div class="flex flex-col gap-10">
-
-            <!-- Service 1: VR Simulations -->
-            <div
-                class="group relative bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 ring-1 ring-black/5 overflow-hidden min-h-[300px] flex items-center transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
-                <!-- Background Image Area (Right) -->
-                <div class="absolute right-0 top-0 w-full md:w-3/5 h-full">
-                    <img src="images/services/vr-simulations.jpg" alt="VR Simulations"
-                        class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500">
-                </div>
-                <!-- Content (Left) -->
-                <div class="relative z-10 p-8 md:p-12 w-full md:w-1/2">
-                    <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
-                        VR SIMULATIONS
-                    </h3>
-                    <p class="text-lg text-gray-700 font-medium leading-relaxed">
-                        Creating highly realistic and immersive training environments that allow professionals to
-                        practice complex or high-risk scenarios in a safe, controlled virtual space. This drives
-                        cost-effective skill acquisition and operational readiness.
-                    </p>
-                </div>
+    <section class="py-24 bg-[#ECECEC]">
+        <div class="container mx-auto px-6">
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-black uppercase tracking-tight shadow-black">
+                    OUR SERVICES
+                </h2>
+                <a href="projects.html"
+                    class="flex items-center gap-2 bg-black text-white px-8 py-3 rounded-lg font-bold hover:bg-gray-800 transition-colors">
+                    <span>View Projects</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
 
-            <!-- Service 2: Gamification -->
-            <div
-                class="group relative bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 ring-1 ring-black/5 overflow-hidden min-h-[300px] flex items-center transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
-                <div class="absolute right-0 top-0 w-full md:w-3/5 h-full">
-                    <img src="images/services/gamification.jpg" alt="Gamification"
-                        class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500">
-                </div>
-                <div class="relative z-10 p-8 md:p-12 w-full md:w-1/2">
-                    <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
-                        GAMIFICATION
-                    </h3>
-                    <p class="text-lg text-gray-700 font-medium leading-relaxed">
-                        Integrating game mechanics (such as points, badges, progress bars, and rewards) into non-game
-                        contexts, including corporate training, educational programs, and customer loyalty platforms, to
-                        boost engagement, motivation, and user retention.
-                    </p>
-                </div>
-            </div>
+            <!-- Services List -->
+            <div class="flex flex-col gap-10">
 
-            <!-- Service 3: Game Development -->
-            <div
-                class="group relative bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 ring-1 ring-black/5 overflow-hidden min-h-[300px] flex items-center transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
-                <div class="absolute right-0 top-0 w-full md:w-3/5 h-full">
-                    <img src="images/services/game-development.jpg" alt="Game Development"
-                        class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500">
+                <!-- Service 1: VR Simulations -->
+                <div
+                    class="group bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 overflow-hidden flex flex-col lg:flex-row min-h-[350px] transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+                    <!-- Content (Left) -->
+                    <div class="p-8 md:p-12 w-full lg:w-1/2 flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
+                            VR SIMULATIONS
+                        </h3>
+                        <p class="text-lg text-gray-700 font-medium leading-relaxed">
+                            Creating highly realistic and immersive training environments that allow professionals to
+                            practice complex or high-risk scenarios in a safe, controlled virtual space. This drives
+                            cost-effective skill acquisition and operational readiness.
+                        </p>
+                    </div>
+                    <!-- Image (Right) -->
+                    <div class="w-full lg:w-1/2 h-64 lg:h-auto overflow-hidden">
+                        <img src="images/services/vr-simulations.jpg" alt="VR Simulations"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
                 </div>
-                <div class="relative z-10 p-8 md:p-12 w-full md:w-1/2">
-                    <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
-                        GAME DEVELOPMENT
-                    </h3>
-                    <p class="text-lg text-gray-700 font-medium leading-relaxed">
-                        Full-cycle development of custom digital games, covering both entertainment and "serious game"
-                        applications. We design and engineer engaging experiences tailored to meet specific marketing,
-                        educational, or therapeutic objectives.
-                    </p>
-                </div>
-            </div>
 
-            <!-- Service 4: Game Design -->
-            <div
-                class="group relative bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 ring-1 ring-black/5 overflow-hidden min-h-[300px] flex items-center transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
-                <div class="absolute right-0 top-0 w-full md:w-3/5 h-full">
-                    <img src="images/services/game-design.jpg" alt="Game Design"
-                        class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500">
+                <!-- Service 2: Gamification -->
+                <div
+                    class="group bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 overflow-hidden flex flex-col lg:flex-row min-h-[350px] transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+                    <div class="p-8 md:p-12 w-full lg:w-1/2 flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
+                            GAMIFICATION
+                        </h3>
+                        <p class="text-lg text-gray-700 font-medium leading-relaxed">
+                            Integrating game mechanics (such as points, badges, progress bars, and rewards) into
+                            non-game contexts, including corporate training, educational programs, and customer loyalty
+                            platforms, to boost engagement, motivation, and user retention.
+                        </p>
+                    </div>
+                    <div class="w-full lg:w-1/2 h-64 lg:h-auto overflow-hidden">
+                        <img src="images/services/gamification.jpg" alt="Gamification"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
                 </div>
-                <div class="relative z-10 p-8 md:p-12 w-full md:w-1/2">
-                    <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
-                        GAME DESIGN
-                    </h3>
-                    <p class="text-lg text-gray-700 font-medium leading-relaxed">
-                        Defining the core mechanics, narrative structure, user interaction (UI/UX), and overall ruleset
-                        for any interactive product. Our focus is on creating balanced, intuitive, and highly replayable
-                        experiences that align with project goals.
-                    </p>
-                </div>
-            </div>
 
-            <!-- Service 5: Game Art -->
-            <div
-                class="group relative bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 ring-1 ring-black/5 overflow-hidden min-h-[300px] flex items-center transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
-                <div class="absolute right-0 top-0 w-full md:w-3/5 h-full">
-                    <img src="images/services/game-art.jpg" alt="Game Art"
-                        class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500">
+                <!-- Service 3: Game Development -->
+                <div
+                    class="group bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 overflow-hidden flex flex-col lg:flex-row min-h-[350px] transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+                    <div class="p-8 md:p-12 w-full lg:w-1/2 flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
+                            GAME DEVELOPMENT
+                        </h3>
+                        <p class="text-lg text-gray-700 font-medium leading-relaxed">
+                            Full-cycle development of custom digital games, covering both entertainment and "serious
+                            game" applications. We design and engineer engaging experiences tailored to meet specific
+                            marketing, educational, or therapeutic objectives.
+                        </p>
+                    </div>
+                    <div class="w-full lg:w-1/2 h-64 lg:h-auto overflow-hidden">
+                        <img src="images/services/game-development.jpg" alt="Game Development"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
                 </div>
-                <div class="relative z-10 p-8 md:p-12 w-full md:w-1/2">
-                    <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
-                        GAME ART
-                    </h3>
-                    <p class="text-lg text-gray-700 font-medium leading-relaxed">
-                        Providing all visual assets required for a compelling interactive experience, including 2D/3D
-                        modeling, environment design, character animation, texture creation, and lighting, ensuring a
-                        high-fidelity and visually cohesive product.
-                    </p>
-                </div>
-            </div>
 
-        </div>
+                <!-- Service 4: Game Design -->
+                <div
+                    class="group bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 overflow-hidden flex flex-col lg:flex-row min-h-[350px] transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+                    <div class="p-8 md:p-12 w-full lg:w-1/2 flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
+                            GAME DESIGN
+                        </h3>
+                        <p class="text-lg text-gray-700 font-medium leading-relaxed">
+                            Defining the core mechanics, narrative structure, user interaction (UI/UX), and overall
+                            ruleset for any interactive product. Our focus is on creating balanced, intuitive, and
+                            highly
+                            replayable experiences that align with project goals.
+                        </p>
+                    </div>
+                    <div class="w-full lg:w-1/2 h-64 lg:h-auto overflow-hidden">
+                        <img src="images/services/game-design.jpg" alt="Game Design"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+
+                <!-- Service 5: Game Art -->
+                <div
+                    class="group bg-white rounded-[2rem] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.1)] border-2 border-gray-300 overflow-hidden flex flex-col lg:flex-row min-h-[350px] transition-all hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
+                    <div class="p-8 md:p-12 w-full lg:w-1/2 flex flex-col justify-center">
+                        <h3 class="text-3xl md:text-4xl font-bold text-[#FA3624] mb-4 uppercase">
+                            GAME ART
+                        </h3>
+                        <p class="text-lg text-gray-700 font-medium leading-relaxed">
+                            Providing all visual assets required for a compelling interactive experience, including
+                            2D/3D
+                            modeling, environment design, character animation, texture creation, and lighting, ensuring
+                            a high-fidelity and visually cohesive product.
+                        </p>
+                    </div>
+                    <div class="w-full lg:w-1/2 h-64 lg:h-auto overflow-hidden">
+                        <img src="images/services/game-art.jpg" alt="Game Art"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+
+            </div>
     </section>
 
 

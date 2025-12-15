@@ -82,10 +82,10 @@ async function loadProjects() {
         // Two placeholder icons as per design
         iconsDiv.innerHTML = `
             <div class="w-8 h-8 bg-[#D9D9D9] rounded flex items-center justify-center text-gray-500">
-                <i class="fa-solid fa-layer-group text-sm"></i>
+                <i class="fa-brands fa-unity text-sm"></i>
             </div>
             <div class="w-8 h-8 bg-[#D9D9D9] rounded flex items-center justify-center text-gray-500">
-                <i class="fa-solid fa-cube text-sm"></i>
+                <i class="fa-solid fa-vr-cardboard text-sm"></i>
             </div>
         `;
 
