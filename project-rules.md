@@ -28,7 +28,7 @@ WebSite_Project/
 └── js/
     ├── companies.js    # Şirket/Partner logolarını render eder
     ├── company-data.js # Partner veri kaynağı (JSON)
-    ├── projects.js     # Projeleri render eder
+    ├── projects.js     # Projeleri render eder (bg-white kartlar)
     ├── projects-data.js # Proje veri kaynağı (JSON)
     └── navbar.js       # Dinamik navigasyon menüsü
 ```
@@ -43,8 +43,8 @@ Site genelinde aydınlık, kurumsal ve ferah bir görünüm hakimdir.
 
 ```css
 /* Ana Renkler */
---bg-white: #FFFFFF          /* Temel arka plan */
---bg-light-gray: #ECECEC     /* Bölüm arka planları / Kartlar için standart gri */
+--bg-white: #FFFFFF          /* Temel arka plan & Kartlar */
+--bg-light-gray: #ECECEC     /* Bölüm arka planları */
 --bg-accent-gray: #EBEBEB    /* Alternatif açık gri */
 
 /* Vurgu ve Metin */
@@ -71,50 +71,55 @@ Veri tabanı veya backend bağımlılığı yoktur. Tüm dinamik içerikler (pro
 
 ### CSS Mimarisi
 *   **Framework:** Tailwind CSS (CDN)
-*   **Özel Stiller:** `style.css` dosyasında Tailwind ile yapılamayan özel animasyonlar (`scroll-reveal`, vb.) ve cam efektleri (`glass-card` - güncel kullanımı sınırlı) bulunur.
+*   **Özel Stiller:** `style.css` dosyasında Tailwind ile yapılamayan özel animasyonlar (`scroll-reveal`, vb.) bulunur.
 *   **Responsive:** Mobil öncelikli (Mobile-First) yaklaşım. `lg:` ve `md:` breakpointleri ile masaüstü düzenleri kurgulanır.
+*   **Kart Stilleri:** Proje ve iletişim kartları genelde beyaz (`bg-white`), border'lı ve hafif gölgelidir.
 
 ---
 
-## � Sayfa Detayları
+##  Sayfa Detayları
 
 ### 1. index.html (Ana Sayfa)
-*   **Hero:** Sağ tarafta konumlanmış, responsive 3D/Modern arka plan görseli (`hero-bg-modern.png`).
-*   **Platforms We Work On:** Unity, WebGL, iOS, Android ikonlarını içeren, hover efektli (`text-black` -> `text-[#FA3624]`) özel bölüm.
-*   **Our Services:** `heattitle-bg.png` arka planı üzerinde, yatay flex kartlar. Görsel ve metin ayrık, birbirinin üzerine binmez.
+*   **Hero:** Sağ tarafta konumlanmış görseli içeren modern giriş.
+*   **Platforms We Work On:** Unity, WebGL, iOS, Android ikonlarını içeren bölüm.
+*   **Our Services:** Görsel ve metin ayrık, birbirinin üzerine binmeyen yatay kartlar.
 
 ### 2. projects.html
 *   Yerel veriden çekilen proje listesi.
-*   Kategori filtreleme (All, VR, AR, Mobile).
-*   Temiz grid yapısı.
+*   Proje kartları beyaz arka plana (`bg-white`) sahiptir.
 
 ### 3. agriculture_collecting_simulation.html
 *   Örnek proje detay sayfası.
 *   Video arka planlı hero.
-*   Özelleştirilmiş grid düzeni ve "Frame" stilli görseller.
+*   Görseller, kenarları yuvarlatılmış ve çerçevelenmiş (`rounded-xl` inside `rounded-2xl` container) özel bir yapıdadır. Hover durumunda görsel taşmaz.
+
+### 4. contact.html
+*   **Office Bölümü:** Adres ve Google Maps haritasını içerir. Kart arka planı beyazdır.
+*   **Contact Bölümü:** İletişim bilgilerini içerir. Kart arka planı beyazdır.
+*   **Form:** İletişim formu. Arka planı beyazdır.
 
 ---
 
 ## 📅 Versiyon Geçmişi / Log
 
-**v2.1 - 15 Aralık 2025 (Son Güncelleme)**
-*   **Hero Revizyonu:** CSS gradient yerine özel 3D render görsel kullanıldı. Görsel boyutlandırması `height` yerine `width` bazlı yapılarak responsive hale getirildi.
-*   **Platforms Bölümü:** Yeni "Platforms We Work On" bölümü eklendi. İkonlar siyah renkten kırmızıya dönen hover efektine sahip.
-*   **Services Düzeni:** "Our Services" kartları görsel ve metin çakışmasını önlemek için Flex-Row yapısına geçirildi (`object-fill` ile görsel yerleşimi optimize edildi).
-*   **Arka Plan Entegrasyonu:** "Platforms" ve "Services" bölümleri, ortak bir `heattitle-bg.png` arka plan görseli kapsayıcısı içine alındı.
-*   **Temizlik:** Kullanılmayan Supabase, Çoklu Dil ve eski Dark Theme kodları/kuralları temizlendi.
+**v2.3 - 16 Aralık 2025 (Son Güncelleme)**
+*   **Contact Sayfası Düzenlemesi:** Google Maps haritası "Office" kartına taşındı. İletişim ve Ofis kutularının arka planı beyaza çekildi.
+*   **Project Detay İyileştirmesi:** `agriculture_collecting_simulation.html` sayfasındaki tüm görseller, sol taraftaki içerik kutularıyla uyumlu çerçeve yapısına (gri border, beyaz padding, rounded corners) kavuştu. Görsel taşma sorunu çözüldü.
+*   **Projects Listesi:** Proje kartlarının arka planı gri'den beyaza dönüştürüldü.
+*   **About Us:** "Max-width" kısıtlaması kaldırılarak sayfa genişliği diğer sayfalarla eşitlendi.
+
+**v2.1 - 15 Aralık 2025**
+*   **Hero Revizyonu:** 3D render görsel entegrasyonu.
+*   **Platforms Bölümü:** Yeni hover efektli platform ikonları.
+*   **Services Düzeni:** Görsel ve metin çakışmasını önleyen Flex-Row yapısı.
 
 **v2.0 - 13 Aralık 2025**
-*   **Light Theme Geçişi:** Karanlık temadan aydınlık (`bg-white`, `bg-[#ECECEC]`) yapıya tam geçiş.
-*   **Renk Güncellemesi:** `#FA3624` (Kırmızı) ana vurgu rengi oldu.
-
-**v1.5 - 10 Aralık 2025**
-*   **English-Only:** Türkçe desteği kaldırıldı.
-*   **Data Migration:** Supabase kaldırıldı, yerel JSON'a geçildi.
+*   **Light Theme Geçişi:** Tamamen aydınlık tema.
+*   **Renk Güncellemesi:** `#FA3624` vurgu rengi.
 
 ---
 
 ## 📞 İletişim
 
-**E-posta:** hello@heatinteractive.com
-**Adres:** Maslak Mah. Büyükdere Cad. Spine Tower No: 243 Sarıyer / İstanbul
+**E-posta:** team@heatinteractive.com
+**Adres:** Yesilbahce mah. 1485 sok. no 15 Muratpasa/Antalya
