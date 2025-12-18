@@ -8,13 +8,13 @@
 **Teknoloji Stack:** HTML, CSS, JavaScript, Tailwind CSS (CDN), Local JSON Data  
 **Lokasyon:** `d:\Git\WebSite_Project`
 
-## 🎯 Proje Amacı
+## 🎯 Proje-Amacı
 
 Heat Interactive, sanal gerçeklik (VR) ve artırılmış gerçeklik (AR) çözümleri sunan bir teknoloji şirketinin kurumsal web sitesidir. Site, modern ve aydınlık (Light Theme) bir tasarımla şirketin hizmetlerini, projelerini ve iş ortaklarını sunmaktadır. Basit, hızlı ve etkileyici bir kullanıcı deneyimi hedeflenmiştir.
 
 ---
 
-## 📁 Dosya Yapısı
+## 📁 Dosya-Yapısı
 
 ```
 WebSite_Project/
