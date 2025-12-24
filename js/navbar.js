@@ -130,8 +130,8 @@ function setActiveLink() {
 
     // Define project detail pages
     const projectDetailPages = [
-        'agriculture_collecting_simulation.html'
-        // Add other project detail pages here as needed
+        'agriculture_collecting_simulation.html',
+        'archaeology_gamification_project.html'
     ];
 
     // Check if current page is a project detail page
